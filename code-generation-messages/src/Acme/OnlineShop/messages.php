@@ -13,10 +13,14 @@ namespace Acme\OnlineShop {
     /**
      * When the customer enters the online shop the `CustomerStartedShopping` event is recorded.
      *
+     * @api
      * @category generated
      */
     final class CustomerStartedShopping implements \Acme\Infra\EventSourcing\Event {
 
+        /**
+         * @api
+         */
         function __construct (
             string $cartId,
             string $customerId,
@@ -41,10 +45,14 @@ namespace Acme\OnlineShop {
     }
 
     /**
+     * @api
      * @category generated
      */
     final class ProductWasAddedToCart implements \Acme\Infra\EventSourcing\Event {
 
+        /**
+         * @api
+         */
         function __construct (
             string $cartId,
             string $customerId,
@@ -87,10 +95,14 @@ namespace Acme\OnlineShop {
     }
 
     /**
+     * @api
      * @category generated
      */
     final class ProductWasRemovedFromCart implements \Acme\Infra\EventSourcing\Event {
 
+        /**
+         * @api
+         */
         function __construct (
             string $cartId,
             string $customerId,
@@ -133,10 +145,14 @@ namespace Acme\OnlineShop {
     }
 
     /**
+     * @api
      * @category generated
      */
     final class CustomerPlacedOrder implements \Acme\Infra\EventSourcing\Event {
 
+        /**
+         * @api
+         */
         function __construct (
             string $cartId,
             string $customerId,
@@ -175,10 +191,14 @@ namespace Acme\OnlineShop {
     /**
      * After an extended period of no activity the `CustomerStartedShopping` event is recorded.
      *
+     * @api
      * @category generated
      */
     final class CustomerAbandonedCart implements \Acme\Infra\EventSourcing\Event {
 
+        /**
+         * @api
+         */
         function __construct (
             string $cartId,
             string $customerId,

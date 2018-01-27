@@ -40,6 +40,9 @@ PHP;
 
     private function generateMessageConstructor (array $messageSpecification): string {
         return <<<PHP
+/**
+ * @api
+ */
 function __construct(
     {$this->generateConstructorParametersList($messageSpecification)}
 ) {
@@ -74,6 +77,7 @@ PHP;
             $docBlocks[] = '';
         }
 
+        $docBlocks[] = '@api';
         $docBlocks[] = '@category generated';
         $docBlock = implode(PHP_EOL.' * ', $docBlocks);
 
