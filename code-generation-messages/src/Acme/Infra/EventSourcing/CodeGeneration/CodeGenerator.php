@@ -172,9 +172,7 @@ DOCBLOCK;
             $commands[] = $command;
         }
 
-        $commandCode = implode(PHP_EOL, $commands);
-
-        return $commandCode;
+        return implode(PHP_EOL, $commands);
     }
 
     private function generateCommand (string $commandClassName, array $commandSpecification): string {
