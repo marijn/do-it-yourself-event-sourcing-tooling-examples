@@ -12,11 +12,9 @@ final class CodeGenerator {
 
         foreach ($dsl as $module => $moduleSpecification)
         {
-            $eventCode = $this->generateEvents($moduleSpecification['events']);
-
             $namespaces[] = <<<PHP
 namespace {$module} {
-{$eventCode}
+{$this->generateEvents($moduleSpecification['events'])}
 }
 PHP;
         }
