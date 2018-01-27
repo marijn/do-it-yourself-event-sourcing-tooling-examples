@@ -84,6 +84,9 @@ PHP;
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
         return <<<PHP
+/**
+ * @category generated
+ */
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
 {$this->generateMessageAttributes($eventSpecification)}

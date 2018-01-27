@@ -10,6 +10,9 @@
 
 namespace Acme\OnlineShop {
 
+    /**
+     * @category generated
+     */
     final class CustomerStartedShopping implements \Acme\Infra\EventSourcing\Event {
 
         function __construct (
@@ -35,6 +38,9 @@ namespace Acme\OnlineShop {
         function startedShoppingAt (): string { return $this->startedShoppingAt; }
     }
 
+    /**
+     * @category generated
+     */
     final class ProductWasAddedToCart implements \Acme\Infra\EventSourcing\Event {
 
         function __construct (
@@ -78,6 +84,9 @@ namespace Acme\OnlineShop {
         function addedAt (): string { return $this->addedAt; }
     }
 
+    /**
+     * @category generated
+     */
     final class ProductWasRemovedFromCart implements \Acme\Infra\EventSourcing\Event {
 
         function __construct (
@@ -121,6 +130,9 @@ namespace Acme\OnlineShop {
         function removedAt (): string { return $this->removedAt; }
     }
 
+    /**
+     * @category generated
+     */
     final class CustomerPlacedOrder implements \Acme\Infra\EventSourcing\Event {
 
         function __construct (
@@ -158,6 +170,9 @@ namespace Acme\OnlineShop {
         function orderPlacedAt (): string { return $this->orderPlacedAt; }
     }
 
+    /**
+     * @category generated
+     */
     final class CustomerAbandonedCart implements \Acme\Infra\EventSourcing\Event {
 
         function __construct (
