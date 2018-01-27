@@ -33,7 +33,7 @@ namespace Acme\OnlineShop {
             string $cartId,
             string $customerId,
             string $sku,
-            string $priceInCents,
+            int $priceInCents,
             string $currency,
             string $addedAt
         ) {
@@ -59,7 +59,7 @@ namespace Acme\OnlineShop {
 
         private $priceInCents;
 
-        function priceInCents (): string { return $this->priceInCents; }
+        function priceInCents (): int { return $this->priceInCents; }
 
         private $currency;
 
@@ -76,7 +76,7 @@ namespace Acme\OnlineShop {
             string $cartId,
             string $customerId,
             string $sku,
-            string $priceInCents,
+            int $priceInCents,
             string $currency,
             string $removedAt
         ) {
@@ -102,7 +102,7 @@ namespace Acme\OnlineShop {
 
         private $priceInCents;
 
-        function priceInCents (): string { return $this->priceInCents; }
+        function priceInCents (): int { return $this->priceInCents; }
 
         private $currency;
 

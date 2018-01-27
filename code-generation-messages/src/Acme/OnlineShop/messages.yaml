@@ -11,7 +11,8 @@ Acme\OnlineShop:
         cartId: ~
         customerId: ~
         sku: ~
-        priceInCents: ~
+        priceInCents:
+          constrainType: 'int'
         currency: ~
         addedAt: ~
 
@@ -20,7 +21,8 @@ Acme\OnlineShop:
         cartId: ~
         customerId: ~
         sku: ~
-        priceInCents: ~
+        priceInCents:
+          constrainType: 'int'
         currency: ~
         removedAt: ~
 
