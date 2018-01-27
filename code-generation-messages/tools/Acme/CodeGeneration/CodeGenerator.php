@@ -12,9 +12,10 @@ final class CodeGenerator {
 
         foreach ($dsl as $module => $moduleSpecification)
         {
+            $eventSpecifications = $moduleSpecification['events'];
             $events = [];
 
-            foreach ($moduleSpecification['events'] as $event => $eventSpecification)
+            foreach ($eventSpecifications as $event => $eventSpecification)
             {
                 $events[] = $this->generateEvent($event, $eventSpecification);
             }
