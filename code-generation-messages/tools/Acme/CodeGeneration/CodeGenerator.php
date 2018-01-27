@@ -74,14 +74,12 @@ PHP;
     }
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
-        $messageCode = <<<PHP
+        return <<<PHP
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
 {$this->generateMessageAttributes($eventSpecification)}
 }
 PHP;
-
-        return $messageCode;
     }
 
     private function generateEvents (array $eventSpecifications): string {
