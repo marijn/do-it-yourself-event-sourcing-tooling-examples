@@ -16,29 +16,7 @@ final class CodeGenerator {
 
             foreach ($moduleSpecification['events'] as $event => $eventSpecification)
             {
-                $constructorParameters = [];
-                $constructorAttributes = [];
-
-                foreach ($eventSpecification['attributes'] as $attribute => $attributeSpecification)
-                {
-                    $constructorParameters[] = <<<PHP
-string \${$attribute},
-PHP;
-                    $constructorAttributes[] = <<<PHP
-\$this->{$attribute} = \${$attribute};
-PHP;
-
-                }
-
-                $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
-                $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
-                $constructorCode = <<<PHP
-function __construct(
-    {$constructorParametersCode}
-) {
-    {$constructorAttributesCode}
-}
-PHP;
+                $constructorCode = $this->generateMessageConstructor($eventSpecification);
 
                 $eventAttributes = [];
 
@@ -74,5 +52,32 @@ PHP;
 
 {$code}
 PHP;
+    }
+
+    private function generateMessageConstructor (array $messageSpecification): string {
+        $constructorParameters = [];
+        $constructorAttributes = [];
+
+        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $constructorParameters[] = <<<PHP
+string \${$attribute},
+PHP;
+            $constructorAttributes[] = <<<PHP
+\$this->{$attribute} = \${$attribute};
+PHP;
+        }
+
+        $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
+        $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
+        $constructorCode = <<<PHP
+function __construct(
+    {$constructorParametersCode}
+) {
+    {$constructorAttributesCode}
+}
+PHP;
+
+        return $constructorCode;
     }
 }
