@@ -12,6 +12,12 @@ use PHPUnit\Framework\AssertionFailedError;
  */
 final class EventSourcedCommandHandlerScenario implements TestScenario {
 
+    function given(Event $event): EventSourcedCommandHandlerScenario {
+        // TODO: Implement given() method.
+
+        return $this;
+    }
+
     function when(Command $command): EventSourcedCommandHandlerScenario {
         // TODO: Implement when() method.
 
@@ -20,6 +26,12 @@ final class EventSourcedCommandHandlerScenario implements TestScenario {
 
     function then(Event $event): EventSourcedCommandHandlerScenario {
         // TODO: Implement then() method.
+
+        return $this;
+    }
+
+    function thenNothing(): EventSourcedCommandHandlerScenario {
+        // TODO: Implement thenNothing() method.
 
         return $this;
     }
