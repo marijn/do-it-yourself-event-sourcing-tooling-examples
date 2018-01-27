@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Acme\CodeGeneration;
+namespace Acme\Infra\EventSourcing\CodeGeneration;
 
-use function Acme\canonical_to_fully_qualified;
+use function Acme\Infra\EventSourcing\canonical_to_fully_qualified;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
@@ -58,7 +58,7 @@ PHP;
  * Modify by changing the underlying DSL. Convention stipulates that the file has an identical filename with a .yaml extension.
  * Are you a first-timer? Ask someone to help you. Have a nice day :-)
  *
- * @see \Acme\CodeGeneration\CodeGenerator
+ * @see \Acme\Infra\EventSourcing\CodeGeneration\CodeGenerator
  */
 
 {$code}

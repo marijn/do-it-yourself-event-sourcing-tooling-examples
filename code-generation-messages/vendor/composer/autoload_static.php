@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInite249306b8c7ac427060268586f916aff
 {
     public static $files = array (
-        '7dd88b7f655ad24cb2ca8b24536b9287' => __DIR__ . '/../..' . '/tools/Acme/functions.php',
+        'fab84e1d0e5343ba2e54c79e364c03f2' => __DIR__ . '/../..' . '/src/Acme/Infra/EventSourcing/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -30,7 +30,6 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
             'Acme\\' => 
             array (
                 0 => __DIR__ . '/../..' . '/src',
-                1 => __DIR__ . '/../..' . '/tools',
             ),
         ),
     );

@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '7dd88b7f655ad24cb2ca8b24536b9287' => $baseDir . '/tools/Acme/functions.php',
+    'fab84e1d0e5343ba2e54c79e364c03f2' => $baseDir . '/src/Acme/Infra/EventSourcing/functions.php',
 );

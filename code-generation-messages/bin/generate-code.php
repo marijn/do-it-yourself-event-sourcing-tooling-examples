@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Acme\CodeGeneration\CodeGenerator;
+use Acme\Infra\EventSourcing\CodeGeneration\CodeGenerator;
 use Symfony\Component\Yaml\Yaml;
 
 const errorOnInvalidUsage = 1;

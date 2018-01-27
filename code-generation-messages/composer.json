@@ -8,10 +8,10 @@
   },
   "autoload": {
     "psr-0": {
-      "Acme\\": ["src/", "tools/"]
+      "Acme\\": ["src/"]
     },
     "files": [
-      "tools/Acme/functions.php"
+      "src/Acme/Infra/EventSourcing/functions.php"
     ]
   }
 }
