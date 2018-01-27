@@ -61,9 +61,10 @@ PHP;
 
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
         {
+            $typeConstraint = "string";
             $eventAttributes[] = <<<PHP
 private \${$attribute};
-function {$attribute}(): string { return \$this->{$attribute}; }
+function {$attribute}(): {$typeConstraint} { return \$this->{$attribute}; }
 PHP;
         }
 
