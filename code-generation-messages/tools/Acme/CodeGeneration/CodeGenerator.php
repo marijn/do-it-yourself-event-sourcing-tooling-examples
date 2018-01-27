@@ -79,12 +79,7 @@ PHP;
 
         $docBlocks[] = '@api';
         $docBlocks[] = '@category generated';
-        $docBlockStatements = implode(PHP_EOL.' * ', $docBlocks);
-        $docBlock = <<<DOCBLOCK
-/**
- * {$docBlockStatements}
- */
-DOCBLOCK;
+        $docBlock = $this->generateDockBlocks(... $docBlocks);
 
         return <<<PHP
 {$docBlock}
@@ -139,5 +134,16 @@ PHP;
         $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
 
         return $constructorAttributesCode;
+    }
+
+    private function generateDockBlocks (string ... $docBlocks): string {
+        $docBlockStatements = implode(PHP_EOL . ' * ', $docBlocks);
+        $docBlock = <<<DOCBLOCK
+/**
+ * {$docBlockStatements}
+ */
+DOCBLOCK;
+
+        return $docBlock;
     }
 }
