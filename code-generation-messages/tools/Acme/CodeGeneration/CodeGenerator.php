@@ -129,8 +129,6 @@ PHP;
 PHP;
         }
 
-        $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
-
-        return $constructorParametersCode;
+        return rtrim(implode(PHP_EOL, $constructorParameters), ',');
     }
 }
