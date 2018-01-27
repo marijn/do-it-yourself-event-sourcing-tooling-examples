@@ -35,9 +35,7 @@ PHP;
 
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
         {
-            $typeConstraint = is_array($attributeSpecification) && array_key_exists('constrainType', $attributeSpecification)
-                ? $attributeSpecification['constrainType']
-                : "string";
+            $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
             $constructorParameters[] = <<<PHP
 {$typeConstraint} \${$attribute},
 PHP;
@@ -63,9 +61,7 @@ PHP;
 
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
         {
-            $typeConstraint = is_array($attributeSpecification) && array_key_exists('constrainType', $attributeSpecification)
-                ? $attributeSpecification['constrainType']
-                : "string";
+            $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
             $eventAttributes[] = <<<PHP
 private \${$attribute};
 function {$attribute}(): {$typeConstraint} { return \$this->{$attribute}; }
@@ -97,5 +93,11 @@ PHP;
         }
 
         return implode(PHP_EOL, $events);
+    }
+
+    private function typeConstraintOfAttribute (array $attributeSpecification = null): string {
+        return is_array($attributeSpecification) && array_key_exists('constrainType', $attributeSpecification)
+            ? $attributeSpecification['constrainType']
+            : "string";
     }
 }
