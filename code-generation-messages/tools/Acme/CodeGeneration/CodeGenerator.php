@@ -39,7 +39,7 @@ PHP;
     }
 
     private function generateMessageConstructor (array $messageSpecification): string {
-        $constructorParametersCode = $this->createConstructorParametersList($messageSpecification);
+        $constructorParametersCode = $this->generateConstructorParametersList($messageSpecification);
 
         $constructorAttributes = [];
 
@@ -118,7 +118,7 @@ PHP;
             : "string";
     }
 
-    private function createConstructorParametersList (array $messageSpecification): string {
+    private function generateConstructorParametersList (array $messageSpecification): string {
         $constructorParameters = [];
 
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
