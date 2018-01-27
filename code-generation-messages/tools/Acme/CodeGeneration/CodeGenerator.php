@@ -17,18 +17,8 @@ final class CodeGenerator {
             foreach ($moduleSpecification['events'] as $event => $eventSpecification)
             {
                 $constructorCode = $this->generateMessageConstructor($eventSpecification);
+                $eventAttributesCode = $this->generateMessageAttributes($eventSpecification);
 
-                $eventAttributes = [];
-
-                foreach ($eventSpecification['attributes'] as $attribute => $attributeSpecification)
-                {
-                    $eventAttributes[] = <<<PHP
-private \${$attribute};
-function {$attribute}(): string { return \$this->{$attribute}; }
-PHP;
-                }
-
-                $eventAttributesCode = implode(PHP_EOL, $eventAttributes);
                 $events[] = <<<PHP
 final class {$event} implements \Acme\Infra\EventSourcing\Event {
 {$constructorCode}
@@ -78,5 +68,21 @@ function __construct(
     {$constructorAttributesCode}
 }
 PHP;
+    }
+
+    private function generateMessageAttributes (array $messageSpecification): string {
+        $eventAttributes = [];
+
+        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $eventAttributes[] = <<<PHP
+private \${$attribute};
+function {$attribute}(): string { return \$this->{$attribute}; }
+PHP;
+        }
+
+        $eventAttributesCode = implode(PHP_EOL, $eventAttributes);
+
+        return $eventAttributesCode;
     }
 }
