@@ -1,0 +1,31 @@
+Acme\OnlineShop:
+  events:
+    CustomerStartedShopping:
+      attributes:
+        cartId: ~
+        customerId: ~
+        startedShoppingAt: ~
+
+    ProductWasAddedToCart:
+      attributes:
+        cartId: ~
+        customerId: ~
+        sku: ~
+        priceInCents: ~
+        currency: ~
+        addedAt: ~
+
+    ProductWasRemovedFromCart:
+      attributes:
+        cartId: ~
+        customerId: ~
+        sku: ~
+        priceInCents: ~
+        currency: ~
+        removedAt: ~
+
+    CustomerAbandonedCart:
+      attributes:
+        cartId: ~
+        customerId: ~
+        abandonedAt: ~

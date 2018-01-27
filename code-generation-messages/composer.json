@@ -1,0 +1,14 @@
+{
+  "name": "do-it-yourself-event-sourcing-tooling/code-generation-messages",
+  "license": "proprietary",
+  "type": "project",
+  "require": {
+    "symfony/yaml": "YAML Parser (loose version because reliable vendor)",
+    "symfony/yaml": "^3.2"
+  },
+  "autoload": {
+    "psr-0": {
+      "Acme\\": ["src/", "tools/"]
+    }
+  }
+}
