@@ -40,6 +40,15 @@ PHP;
 
     private function generateMessageConstructor (array $messageSpecification): string {
         $docBlocks = ['@api'];
+
+        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
+            $docBlocks[] = <<<DOCBLOCK
+@param {$typeConstraint} \${$attribute}
+DOCBLOCK;
+        }
+
         $docBlock = $this->generateDockBlocks(... $docBlocks);
 
         return <<<PHP

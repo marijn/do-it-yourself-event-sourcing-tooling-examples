@@ -20,6 +20,10 @@ namespace Acme\OnlineShop {
 
         /**
          * @api
+         *
+         * @param string $cartId
+         * @param string $customerId
+         * @param string $startedShoppingAt
          */
         function __construct (
             string $cartId,
@@ -52,6 +56,13 @@ namespace Acme\OnlineShop {
 
         /**
          * @api
+         *
+         * @param string $cartId
+         * @param string $customerId
+         * @param string $sku
+         * @param int $priceInCents
+         * @param string $currency
+         * @param string $addedAt
          */
         function __construct (
             string $cartId,
@@ -102,6 +113,13 @@ namespace Acme\OnlineShop {
 
         /**
          * @api
+         *
+         * @param string $cartId
+         * @param string $customerId
+         * @param string $sku
+         * @param int $priceInCents
+         * @param string $currency
+         * @param string $removedAt
          */
         function __construct (
             string $cartId,
@@ -152,6 +170,12 @@ namespace Acme\OnlineShop {
 
         /**
          * @api
+         *
+         * @param string $cartId
+         * @param string $customerId
+         * @param string $orderId
+         * @param array $orderLines
+         * @param string $orderPlacedAt
          */
         function __construct (
             string $cartId,
@@ -198,6 +222,10 @@ namespace Acme\OnlineShop {
 
         /**
          * @api
+         *
+         * @param string $cartId
+         * @param string $customerId
+         * @param string $abandonedAt
          */
         function __construct (
             string $cartId,
