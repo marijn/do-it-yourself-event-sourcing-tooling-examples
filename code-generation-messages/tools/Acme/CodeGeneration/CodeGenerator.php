@@ -39,10 +39,8 @@ PHP;
     }
 
     private function generateMessageConstructor (array $messageSpecification): string {
-        $docBlock = $this->generateDockBlocks('@api');
-
         return <<<PHP
-{$docBlock}
+{$this->generateDockBlocks('@api')}
 function __construct(
     {$this->generateConstructorParametersList($messageSpecification)}
 ) {
