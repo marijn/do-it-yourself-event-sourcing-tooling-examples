@@ -24,6 +24,13 @@ if (count($argv) < 2 || count($argv) > 2)
 $cg = new CodeGenerator;
 $dslUri = $argv[1];
 $dslFile = @file_get_contents($dslUri);
+
+if (false === $dslFile)
+{
+    echo "\033[0;31mFile '{$dslUri}' could not be read.\033[0m\n";
+    die(2);
+}
+
 $dsl = Yaml::parse($dslFile);
 
 echo $cg->generate($dsl), PHP_EOL;
