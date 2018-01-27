@@ -84,6 +84,13 @@ PHP;
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
         $docBlocks = [];
+
+        if (array_key_exists('doc', $eventSpecification))
+        {
+            $docBlocks[] = $eventSpecification['doc'];
+            $docBlocks[] = '';
+        }
+
         $docBlocks[] = '@category generated';
         $docBlock = implode(PHP_EOL.' * ', $docBlocks);
 

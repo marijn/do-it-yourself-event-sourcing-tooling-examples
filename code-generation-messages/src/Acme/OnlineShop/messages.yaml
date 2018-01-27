@@ -1,6 +1,7 @@
 Acme\OnlineShop:
   events:
     CustomerStartedShopping:
+      doc: 'When the customer enters the online shop the `CustomerStartedShopping` event is recorded.'
       attributes:
         cartId: ~
         customerId: ~
@@ -36,6 +37,7 @@ Acme\OnlineShop:
         orderPlacedAt: ~
 
     CustomerAbandonedCart:
+      doc: 'After an extended period of no activity the `CustomerStartedShopping` event is recorded.'
       attributes:
         cartId: ~
         customerId: ~

@@ -11,6 +11,8 @@
 namespace Acme\OnlineShop {
 
     /**
+     * When the customer enters the online shop the `CustomerStartedShopping` event is recorded.
+     *
      * @category generated
      */
     final class CustomerStartedShopping implements \Acme\Infra\EventSourcing\Event {
@@ -171,6 +173,8 @@ namespace Acme\OnlineShop {
     }
 
     /**
+     * After an extended period of no activity the `CustomerStartedShopping` event is recorded.
+     *
      * @category generated
      */
     final class CustomerAbandonedCart implements \Acme\Infra\EventSourcing\Event {
