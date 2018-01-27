@@ -16,12 +16,11 @@ final class CodeGenerator {
 
             foreach ($moduleSpecification['events'] as $event => $eventSpecification)
             {
-                $constructorCode = $this->generateMessageConstructor($eventSpecification);
                 $eventAttributesCode = $this->generateMessageAttributes($eventSpecification);
 
                 $events[] = <<<PHP
 final class {$event} implements \Acme\Infra\EventSourcing\Event {
-{$constructorCode}
+{$this->generateMessageConstructor($eventSpecification)}
 {$eventAttributesCode}
 }
 PHP;
