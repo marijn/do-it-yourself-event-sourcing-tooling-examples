@@ -9,6 +9,9 @@
   "autoload": {
     "psr-0": {
       "Acme\\": ["src/", "tools/"]
-    }
+    },
+    "files": [
+      "tools/Acme/functions.php"
+    ]
   }
 }

@@ -2,6 +2,8 @@
 
 namespace Acme\CodeGeneration;
 
+use function Acme\canonical_to_fully_qualified;
+
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
@@ -12,7 +14,7 @@ final class CodeGenerator {
 
         foreach ($dsl as $canonicalModuleName => $moduleSpecification)
         {
-            $module = str_replace('.', '\\', $canonicalModuleName);
+            $module = canonical_to_fully_qualified($canonicalModuleName);
             $namespaces[] = <<<PHP
 namespace {$module} {
 {$this->generateEvents($moduleSpecification['events'])}
