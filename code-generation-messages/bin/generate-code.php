@@ -7,6 +7,7 @@ use Acme\CodeGeneration\CodeGenerator;
 use Symfony\Component\Yaml\Yaml;
 
 const errorOnInvalidUsage = 1;
+const errorOnFileReadingProblems = 2;
 
 if (count($argv) < 2 || count($argv) > 2)
 {
@@ -30,7 +31,7 @@ $dslFile = @file_get_contents($dslUri);
 if (false === $dslFile)
 {
     echo "\033[0;31mFile '{$dslUri}' could not be read.\033[0m\n";
-    die(2);
+    die(errorOnFileReadingProblems);
 }
 
 $dsl = Yaml::parse($dslFile);
