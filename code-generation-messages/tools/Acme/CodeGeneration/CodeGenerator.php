@@ -13,14 +13,8 @@ final class CodeGenerator {
         foreach ($dsl as $module => $moduleSpecification)
         {
             $eventSpecifications = $moduleSpecification['events'];
-            $events = [];
+            $eventCode = $this->generateEvents($eventSpecifications);
 
-            foreach ($eventSpecifications as $event => $eventSpecification)
-            {
-                $events[] = $this->generateEvent($event, $eventSpecification);
-            }
-
-            $eventCode = implode(PHP_EOL, $events);
             $namespaces[] = <<<PHP
 namespace {$module} {
 {$eventCode}
@@ -88,5 +82,18 @@ final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 PHP;
 
         return $messageCode;
+    }
+
+    private function generateEvents (array $eventSpecifications): string {
+        $events = [];
+
+        foreach ($eventSpecifications as $event => $eventSpecification)
+        {
+            $events[] = $this->generateEvent($event, $eventSpecification);
+        }
+
+        $eventCode = implode(PHP_EOL, $events);
+
+        return $eventCode;
     }
 }
