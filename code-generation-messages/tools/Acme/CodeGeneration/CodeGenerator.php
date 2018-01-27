@@ -35,8 +35,9 @@ PHP;
 
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
         {
+            $typeConstraint = "string";
             $constructorParameters[] = <<<PHP
-string \${$attribute},
+{$typeConstraint} \${$attribute},
 PHP;
             $constructorAttributes[] = <<<PHP
 \$this->{$attribute} = \${$attribute};
