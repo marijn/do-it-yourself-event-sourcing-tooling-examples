@@ -10,8 +10,9 @@ final class CodeGenerator {
     function generate(array $dsl): string {
         $namespaces = [];
 
-        foreach ($dsl as $module => $moduleSpecification)
+        foreach ($dsl as $canonicalModuleName => $moduleSpecification)
         {
+            $module = str_replace('.', '\\', $canonicalModuleName);
             $namespaces[] = <<<PHP
 namespace {$module} {
 {$this->generateEvents($moduleSpecification['events'])}
