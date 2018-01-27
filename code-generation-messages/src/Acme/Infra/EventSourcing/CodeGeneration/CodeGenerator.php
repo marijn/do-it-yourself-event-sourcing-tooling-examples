@@ -15,11 +15,10 @@ final class CodeGenerator {
         foreach ($dsl as $canonicalModuleName => $moduleSpecification)
         {
             $module = canonical_to_fully_qualified($canonicalModuleName);
-            $commandCode = $this->generateCommands($moduleSpecification);
             $namespaces[] = <<<PHP
 namespace {$module} {
 {$this->generateEvents($moduleSpecification['events'])}
-{$commandCode}
+{$this->generateCommands($moduleSpecification)}
 }
 PHP;
         }
