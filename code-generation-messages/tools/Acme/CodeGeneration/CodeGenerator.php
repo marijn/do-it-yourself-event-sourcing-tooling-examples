@@ -40,7 +40,6 @@ PHP;
 
     private function generateMessageConstructor (array $messageSpecification): string {
         $constructorParameters = [];
-        $constructorAttributes = [];
 
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
         {
@@ -48,12 +47,18 @@ PHP;
             $constructorParameters[] = <<<PHP
 {$typeConstraint} \${$attribute},
 PHP;
+        }
+        $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
+
+        $constructorAttributes = [];
+
+        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
             $constructorAttributes[] = <<<PHP
 \$this->{$attribute} = \${$attribute};
 PHP;
         }
 
-        $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
         $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
 
         return <<<PHP
