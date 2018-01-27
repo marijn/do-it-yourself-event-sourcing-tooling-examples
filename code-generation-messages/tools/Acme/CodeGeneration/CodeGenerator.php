@@ -40,17 +40,7 @@ PHP;
 
     private function generateMessageConstructor (array $messageSpecification): string {
         $constructorParametersCode = $this->generateConstructorParametersList($messageSpecification);
-
-        $constructorAttributes = [];
-
-        foreach ($messageSpecification['attributes'] as $attribute1 => $attributeSpecification)
-        {
-            $constructorAttributes[] = <<<PHP
-\$this->{$attribute1} = \${$attribute1};
-PHP;
-        }
-
-        $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
+        $constructorAttributesCode = $this->generateConstructorAttributeAssignment($messageSpecification);
 
         return <<<PHP
 function __construct(
@@ -130,5 +120,20 @@ PHP;
         }
 
         return rtrim(implode(PHP_EOL, $constructorParameters), ',');
+    }
+
+    private function generateConstructorAttributeAssignment (array $messageSpecification): string {
+        $constructorAttributes = [];
+
+        foreach ($messageSpecification['attributes'] as $attribute1 => $attributeSpecification)
+        {
+            $constructorAttributes[] = <<<PHP
+\$this->{$attribute1} = \${$attribute1};
+PHP;
+        }
+
+        $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
+
+        return $constructorAttributesCode;
     }
 }
