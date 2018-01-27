@@ -6,6 +6,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Acme\CodeGeneration\CodeGenerator;
 use Symfony\Component\Yaml\Yaml;
 
+const errorOnInvalidUsage = 1;
+
 if (count($argv) < 2 || count($argv) > 2)
 {
     echo "\033[0;31mInvalid usage of script.\033[0m\n";
@@ -18,7 +20,7 @@ if (count($argv) < 2 || count($argv) > 2)
     echo "\n";
     echo " $\033[0;32m bin/generate-code.php src/Acme/OnlineShop/messages.yaml\033[0m\n";
     echo "\n";
-    die(1);
+    die(errorOnInvalidUsage);
 }
 
 $cg = new CodeGenerator;
