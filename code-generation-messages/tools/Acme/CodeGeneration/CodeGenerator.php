@@ -92,8 +92,6 @@ PHP;
             $events[] = $this->generateEvent($event, $eventSpecification);
         }
 
-        $eventCode = implode(PHP_EOL, $events);
-
-        return $eventCode;
+        return implode(PHP_EOL, $events);
     }
 }
