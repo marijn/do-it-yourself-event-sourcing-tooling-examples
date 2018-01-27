@@ -36,4 +36,4 @@ if (false === $dslFile)
 
 $dsl = Yaml::parse($dslFile);
 
-echo $cg->generate($dsl), PHP_EOL;
+echo $cg->generate($dsl);
