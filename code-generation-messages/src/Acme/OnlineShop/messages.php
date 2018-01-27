@@ -113,6 +113,43 @@ namespace Acme\OnlineShop {
         function removedAt (): string { return $this->removedAt; }
     }
 
+    final class CustomerPlacedOrder implements \Acme\Infra\EventSourcing\Event {
+
+        function __construct (
+            string $cartId,
+            string $customerId,
+            string $orderId,
+            array $orderLines,
+            string $orderPlacedAt
+        ) {
+            $this->cartId = $cartId;
+            $this->customerId = $customerId;
+            $this->orderId = $orderId;
+            $this->orderLines = $orderLines;
+            $this->orderPlacedAt = $orderPlacedAt;
+        }
+
+        private $cartId;
+
+        function cartId (): string { return $this->cartId; }
+
+        private $customerId;
+
+        function customerId (): string { return $this->customerId; }
+
+        private $orderId;
+
+        function orderId (): string { return $this->orderId; }
+
+        private $orderLines;
+
+        function orderLines (): array { return $this->orderLines; }
+
+        private $orderPlacedAt;
+
+        function orderPlacedAt (): string { return $this->orderPlacedAt; }
+    }
+
     final class CustomerAbandonedCart implements \Acme\Infra\EventSourcing\Event {
 
         function __construct (

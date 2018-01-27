@@ -26,6 +26,15 @@ Acme\OnlineShop:
         currency: ~
         removedAt: ~
 
+    CustomerPlacedOrder:
+      attributes:
+        cartId: ~
+        customerId: ~
+        orderId: ~
+        orderLines:
+          constrainType: 'array'
+        orderPlacedAt: ~
+
     CustomerAbandonedCart:
       attributes:
         cartId: ~
