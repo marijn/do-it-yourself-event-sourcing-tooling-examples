@@ -44,3 +44,34 @@ Acme.OnlineShop:
         cartId: ~
         customerId: ~
         abandonedAt: ~
+
+  commands:
+    StartShopping:
+      doc: "Start the online shopping process by dispatching this command."
+      attributes:
+        cartId: ~
+        customerId: ~
+        startTime: ~
+
+    AddProductToCart:
+      attributes:
+        cartId: ~
+        sku: ~
+        priceInCents: ~
+        currency:
+          doc: "Per cart only a single currency is supported"
+        transactionTime: ~
+
+    RemoveProductFromCart:
+      attributes:
+        cartId: ~
+        sku: ~
+        priceInCents: ~
+        currency:
+          doc: "Per cart only a single currency is supported"
+        transactionTime: ~
+
+    PlaceOrder:
+      attributes:
+        cartId: ~
+        orderTime: ~

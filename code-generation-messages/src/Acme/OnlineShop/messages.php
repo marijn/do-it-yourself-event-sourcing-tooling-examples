@@ -249,4 +249,171 @@ namespace Acme\OnlineShop {
 
         function abandonedAt (): string { return $this->abandonedAt; }
     }
+
+    /**
+     * Start the online shopping process by dispatching this command.
+     *
+     * @api
+     * @category generated
+     */
+    final class StartShopping implements \Acme\Infra\EventSourcing\Command {
+
+        /**
+         * @api
+         *
+         * @param string $cartId
+         * @param string $customerId
+         * @param string $startTime
+         */
+        function __construct (
+            string $cartId,
+            string $customerId,
+            string $startTime
+        ) {
+            $this->cartId = $cartId;
+            $this->customerId = $customerId;
+            $this->startTime = $startTime;
+        }
+
+        private $cartId;
+
+        function cartId (): string { return $this->cartId; }
+
+        private $customerId;
+
+        function customerId (): string { return $this->customerId; }
+
+        private $startTime;
+
+        function startTime (): string { return $this->startTime; }
+    }
+
+    /**
+     * @api
+     * @category generated
+     */
+    final class AddProductToCart implements \Acme\Infra\EventSourcing\Command {
+
+        /**
+         * @api
+         *
+         * @param string $cartId
+         * @param string $sku
+         * @param string $priceInCents
+         * @param string $currency Per cart only a single currency is supported
+         * @param string $transactionTime
+         */
+        function __construct (
+            string $cartId,
+            string $sku,
+            string $priceInCents,
+            string $currency,
+            string $transactionTime
+        ) {
+            $this->cartId = $cartId;
+            $this->sku = $sku;
+            $this->priceInCents = $priceInCents;
+            $this->currency = $currency;
+            $this->transactionTime = $transactionTime;
+        }
+
+        private $cartId;
+
+        function cartId (): string { return $this->cartId; }
+
+        private $sku;
+
+        function sku (): string { return $this->sku; }
+
+        private $priceInCents;
+
+        function priceInCents (): string { return $this->priceInCents; }
+
+        private $currency;
+
+        function currency (): string { return $this->currency; }
+
+        private $transactionTime;
+
+        function transactionTime (): string { return $this->transactionTime; }
+    }
+
+    /**
+     * @api
+     * @category generated
+     */
+    final class RemoveProductFromCart implements \Acme\Infra\EventSourcing\Command {
+
+        /**
+         * @api
+         *
+         * @param string $cartId
+         * @param string $sku
+         * @param string $priceInCents
+         * @param string $currency Per cart only a single currency is supported
+         * @param string $transactionTime
+         */
+        function __construct (
+            string $cartId,
+            string $sku,
+            string $priceInCents,
+            string $currency,
+            string $transactionTime
+        ) {
+            $this->cartId = $cartId;
+            $this->sku = $sku;
+            $this->priceInCents = $priceInCents;
+            $this->currency = $currency;
+            $this->transactionTime = $transactionTime;
+        }
+
+        private $cartId;
+
+        function cartId (): string { return $this->cartId; }
+
+        private $sku;
+
+        function sku (): string { return $this->sku; }
+
+        private $priceInCents;
+
+        function priceInCents (): string { return $this->priceInCents; }
+
+        private $currency;
+
+        function currency (): string { return $this->currency; }
+
+        private $transactionTime;
+
+        function transactionTime (): string { return $this->transactionTime; }
+    }
+
+    /**
+     * @api
+     * @category generated
+     */
+    final class PlaceOrder implements \Acme\Infra\EventSourcing\Command {
+
+        /**
+         * @api
+         *
+         * @param string $cartId
+         * @param string $orderTime
+         */
+        function __construct (
+            string $cartId,
+            string $orderTime
+        ) {
+            $this->cartId = $cartId;
+            $this->orderTime = $orderTime;
+        }
+
+        private $cartId;
+
+        function cartId (): string { return $this->cartId; }
+
+        private $orderTime;
+
+        function orderTime (): string { return $this->orderTime; }
+    }
 }
