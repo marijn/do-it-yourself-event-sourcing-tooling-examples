@@ -70,14 +70,13 @@ PHP;
 
         $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
         $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
-        $constructorCode = <<<PHP
+
+        return <<<PHP
 function __construct(
     {$constructorParametersCode}
 ) {
     {$constructorAttributesCode}
 }
 PHP;
-
-        return $constructorCode;
     }
 }
