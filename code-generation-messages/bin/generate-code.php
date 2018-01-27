@@ -10,19 +10,20 @@ const errorOnInvalidUsage = 1;
 const errorOnFileReadingProblems = 2;
 
 $stdout = fopen('php://stdout', 'w');
+$stderr = fopen('php://stderr', 'w');
 
 if (count($argv) < 2 || count($argv) > 2)
 {
-    fwrite($stdout, "\033[0;31mInvalid usage of script.\033[0m\n");
-    fwrite($stdout, "\n");
-    fwrite($stdout, "You have to provide:\n");
-    fwrite($stdout, "\n");
-    fwrite($stdout, " - dsl (e.g. example-dsl.yaml)\n");
-    fwrite($stdout, "\n");
-    fwrite($stdout, "Example:\n");
-    fwrite($stdout, "\n");
-    fwrite($stdout, " $\033[0;32m bin/generate-code.php src/Acme/OnlineShop/messages.yaml\033[0m\n");
-    fwrite($stdout, "\n");
+    fwrite($stderr, "\033[0;31mInvalid usage of script.\033[0m\n");
+    fwrite($stderr, "\n");
+    fwrite($stderr, "You have to provide:\n");
+    fwrite($stderr, "\n");
+    fwrite($stderr, " - dsl (e.g. example-dsl.yaml)\n");
+    fwrite($stderr, "\n");
+    fwrite($stderr, "Example:\n");
+    fwrite($stderr, "\n");
+    fwrite($stderr, " $\033[0;32m bin/generate-code.php src/Acme/OnlineShop/messages.yaml\033[0m\n");
+    fwrite($stderr, "\n");
     die(errorOnInvalidUsage);
 }
 
@@ -32,7 +33,7 @@ $dslFile = @file_get_contents($dslUri);
 
 if (false === $dslFile)
 {
-    fwrite($stdout, "\033[0;31mFile '{$dslUri}' could not be read.\033[0m\n");
+    fwrite($stderr, "\033[0;31mFile '{$dslUri}' could not be read.\033[0m\n");
     die(errorOnFileReadingProblems);
 }
 
