@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInite249306b8c7ac427060268586f916aff
 {
     public static $files = array (
+        'e050abfbc8f56b7048f9dd6785c2704d' => __DIR__ . '/../..' . '/src/Acme/OnlineShop/messages.php',
         'fab84e1d0e5343ba2e54c79e364c03f2' => __DIR__ . '/../..' . '/src/Acme/Infra/EventSourcing/functions.php',
     );
 

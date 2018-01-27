@@ -11,6 +11,8 @@
       "Acme\\": ["src/"]
     },
     "files": [
+      "src/Acme/OnlineShop/messages.php",
+
       "src/Acme/Infra/EventSourcing/functions.php"
     ]
   }
