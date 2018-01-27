@@ -16,8 +16,7 @@ final class CodeGenerator {
 
             foreach ($moduleSpecification['events'] as $event => $eventSpecification)
             {
-                $messageCode = $this->generateEvent($event, $eventSpecification);
-                $events[] = $messageCode;
+                $events[] = $this->generateEvent($event, $eventSpecification);
             }
 
             $eventCode = implode(PHP_EOL, $events);
