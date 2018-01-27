@@ -39,13 +39,11 @@ PHP;
     }
 
     private function generateMessageConstructor (array $messageSpecification): string {
-        $constructorAttributesCode = $this->generateConstructorAttributeAssignment($messageSpecification);
-
         return <<<PHP
 function __construct(
     {$this->generateConstructorParametersList($messageSpecification)}
 ) {
-    {$constructorAttributesCode}
+    {$this->generateConstructorAttributeAssignment($messageSpecification)}
 }
 PHP;
     }
