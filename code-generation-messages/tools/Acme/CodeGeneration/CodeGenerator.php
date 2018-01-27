@@ -77,10 +77,9 @@ PHP;
 
         $docBlocks[] = '@api';
         $docBlocks[] = '@category generated';
-        $docBlock = $this->generateDockBlocks(... $docBlocks);
 
         return <<<PHP
-{$docBlock}
+{$this->generateDockBlocks(... $docBlocks)}
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
 {$this->generateMessageAttributes($eventSpecification)}
