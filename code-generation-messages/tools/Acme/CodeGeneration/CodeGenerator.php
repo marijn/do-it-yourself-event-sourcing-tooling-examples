@@ -39,23 +39,14 @@ PHP;
     }
 
     private function generateMessageConstructor (array $messageSpecification): string {
-        $constructorParameters = [];
-
-        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
-        {
-            $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
-            $constructorParameters[] = <<<PHP
-{$typeConstraint} \${$attribute},
-PHP;
-        }
-        $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
+        $constructorParametersCode = $this->createConstructorParametersList($messageSpecification);
 
         $constructorAttributes = [];
 
-        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        foreach ($messageSpecification['attributes'] as $attribute1 => $attributeSpecification)
         {
             $constructorAttributes[] = <<<PHP
-\$this->{$attribute} = \${$attribute};
+\$this->{$attribute1} = \${$attribute1};
 PHP;
         }
 
@@ -125,5 +116,21 @@ PHP;
         return is_array($attributeSpecification) && array_key_exists('constrainType', $attributeSpecification)
             ? $attributeSpecification['constrainType']
             : "string";
+    }
+
+    private function createConstructorParametersList (array $messageSpecification): string {
+        $constructorParameters = [];
+
+        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
+            $constructorParameters[] = <<<PHP
+{$typeConstraint} \${$attribute},
+PHP;
+        }
+
+        $constructorParametersCode = rtrim(implode(PHP_EOL, $constructorParameters), ',');
+
+        return $constructorParametersCode;
     }
 }
