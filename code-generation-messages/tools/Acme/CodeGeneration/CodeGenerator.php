@@ -16,12 +16,7 @@ final class CodeGenerator {
 
             foreach ($moduleSpecification['events'] as $event => $eventSpecification)
             {
-                $messageCode = <<<PHP
-final class {$event} implements \Acme\Infra\EventSourcing\Event {
-{$this->generateMessageConstructor($eventSpecification)}
-{$this->generateMessageAttributes($eventSpecification)}
-}
-PHP;
+                $messageCode = $this->generateEvent($event, $eventSpecification);
                 $events[] = $messageCode;
             }
 
@@ -82,5 +77,16 @@ PHP;
         $eventAttributesCode = implode(PHP_EOL, $eventAttributes);
 
         return $eventAttributesCode;
+    }
+
+    private function generateEvent (string $eventClassName, array $eventSpecification): string {
+        $messageCode = <<<PHP
+final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
+{$this->generateMessageConstructor($eventSpecification)}
+{$this->generateMessageAttributes($eventSpecification)}
+}
+PHP;
+
+        return $messageCode;
     }
 }
