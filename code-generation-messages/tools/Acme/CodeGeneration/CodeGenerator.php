@@ -79,11 +79,11 @@ PHP;
 
         $docBlocks[] = '@api';
         $docBlocks[] = '@category generated';
-        $docBlock = implode(PHP_EOL.' * ', $docBlocks);
+        $docBlockStatements = implode(PHP_EOL.' * ', $docBlocks);
 
         return <<<PHP
 /**
- * {$docBlock}
+ * {$docBlockStatements}
  */
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
