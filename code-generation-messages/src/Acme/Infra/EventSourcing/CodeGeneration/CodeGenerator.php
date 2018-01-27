@@ -15,30 +15,7 @@ final class CodeGenerator {
         foreach ($dsl as $canonicalModuleName => $moduleSpecification)
         {
             $module = canonical_to_fully_qualified($canonicalModuleName);
-            $commands = [];
-
-            foreach ($moduleSpecification['commands'] as $commandClassName => $commandSpecification)
-            {
-                $docBlocks = [];
-
-                if (array_key_exists('doc', $commandSpecification))
-                {
-                    $docBlocks[] = $commandSpecification['doc'];
-                    $docBlocks[] = '';
-                }
-
-                $docBlocks[] = '@api';
-                $docBlocks[] = '@category generated';
-                $commands[] = <<<PHP
-{$this->generateDockBlocks(... $docBlocks)}
-final class {$commandClassName} implements \Acme\Infra\EventSourcing\Command {
-{$this->generateMessageConstructor($commandSpecification)}
-{$this->generateMessageAttributes($commandSpecification)}
-}
-PHP;
-            }
-
-            $commandCode = implode(PHP_EOL, $commands);
+            $commandCode = $this->generateCommands($moduleSpecification);
             $namespaces[] = <<<PHP
 namespace {$module} {
 {$this->generateEvents($moduleSpecification['events'])}
@@ -184,5 +161,34 @@ PHP;
  * {$docBlockStatements}
  */
 DOCBLOCK;
+    }
+
+    private function generateCommands ($moduleSpecification): string {
+        $commands = [];
+
+        foreach ($moduleSpecification['commands'] as $commandClassName => $commandSpecification)
+        {
+            $docBlocks = [];
+
+            if (array_key_exists('doc', $commandSpecification))
+            {
+                $docBlocks[] = $commandSpecification['doc'];
+                $docBlocks[] = '';
+            }
+
+            $docBlocks[] = '@api';
+            $docBlocks[] = '@category generated';
+            $commands[] = <<<PHP
+{$this->generateDockBlocks(... $docBlocks)}
+final class {$commandClassName} implements \Acme\Infra\EventSourcing\Command {
+{$this->generateMessageConstructor($commandSpecification)}
+{$this->generateMessageAttributes($commandSpecification)}
+}
+PHP;
+        }
+
+        $commandCode = implode(PHP_EOL, $commands);
+
+        return $commandCode;
     }
 }
