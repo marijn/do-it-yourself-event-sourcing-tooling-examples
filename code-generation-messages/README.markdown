@@ -8,6 +8,11 @@ How to run it?
 
 You can compile the message classes by running `bin/compile.sh`. 
 
+How to run the tests?
+---------------------
+
+In your IDE! Additionally you can run the tests from the command line by running `bin/test.sh`.
+
 Why is the generated code so ugly?
 ----------------------------------
 
