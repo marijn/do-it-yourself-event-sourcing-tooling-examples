@@ -83,10 +83,14 @@ PHP;
     }
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
-        return <<<PHP
+        $docBlock = <<<TAG
 /**
  * @category generated
  */
+TAG;
+
+        return <<<PHP
+{$docBlock}
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
 {$this->generateMessageAttributes($eventSpecification)}
