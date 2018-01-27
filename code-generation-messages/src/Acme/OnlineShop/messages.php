@@ -59,7 +59,7 @@ namespace Acme\OnlineShop {
          *
          * @param string $cartId
          * @param string $customerId
-         * @param string $sku
+         * @param string $sku The "Stock Keeping Unit" from the Product Catalog 2.0
          * @param int $priceInCents
          * @param string $currency
          * @param string $addedAt
@@ -116,7 +116,7 @@ namespace Acme\OnlineShop {
          *
          * @param string $cartId
          * @param string $customerId
-         * @param string $sku
+         * @param string $sku The "Stock Keeping Unit" from the Product Catalog 2.0
          * @param int $priceInCents
          * @param string $currency
          * @param string $removedAt

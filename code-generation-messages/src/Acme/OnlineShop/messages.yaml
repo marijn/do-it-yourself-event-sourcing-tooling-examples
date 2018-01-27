@@ -11,7 +11,8 @@ Acme\OnlineShop:
       attributes:
         cartId: ~
         customerId: ~
-        sku: ~
+        sku:
+          doc: 'The "Stock Keeping Unit" from the Product Catalog 2.0'
         priceInCents:
           constrainType: 'int'
         currency: ~
@@ -21,7 +22,8 @@ Acme\OnlineShop:
       attributes:
         cartId: ~
         customerId: ~
-        sku: ~
+        sku:
+          doc: 'The "Stock Keeping Unit" from the Product Catalog 2.0'
         priceInCents:
           constrainType: 'int'
         currency: ~

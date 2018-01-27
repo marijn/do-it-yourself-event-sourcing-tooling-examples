@@ -44,8 +44,11 @@ PHP;
         foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
         {
             $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
+            $doc = is_array($attributeSpecification) && array_key_exists('doc', $attributeSpecification)
+                ? $attributeSpecification['doc']
+                : "";
             $docBlocks[] = <<<DOCBLOCK
-@param {$typeConstraint} \${$attribute}
+@param {$typeConstraint} \${$attribute} {$doc}
 DOCBLOCK;
         }
 
