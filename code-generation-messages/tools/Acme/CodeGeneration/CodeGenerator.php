@@ -138,12 +138,11 @@ PHP;
 
     private function generateDockBlocks (string ... $docBlocks): string {
         $docBlockStatements = implode(PHP_EOL . ' * ', $docBlocks);
-        $docBlock = <<<DOCBLOCK
+
+        return <<<DOCBLOCK
 /**
  * {$docBlockStatements}
  */
 DOCBLOCK;
-
-        return $docBlock;
     }
 }
