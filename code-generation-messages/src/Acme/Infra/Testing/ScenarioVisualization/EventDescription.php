@@ -4,6 +4,7 @@ namespace Acme\Infra\Testing\ScenarioVisualization;
 
 use Acme\Infra\EventSourcing\Event;
 use function Acme\Infra\EventSourcing\fully_qualified_class_name_to_canonical;
+use ReflectionObject;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
@@ -15,7 +16,13 @@ final class EventDescription extends StepDescription {
 
     function __construct (Event $event) {
         $this->eventName = fully_qualified_class_name_to_canonical(get_class($event));
-        $this->data = $event->rawMessagePayload();
+        $this->data = [];
+        $exampleValues = (new ReflectionObject($event))->getConstant('exampleValues');
+
+        foreach ($event->rawMessagePayload() as $key => $value)
+        {
+            $this->data[$key] = $value === $exampleValues[$key] ? '...' : $value;
+        }
     }
 
     function toHtml (): string {
