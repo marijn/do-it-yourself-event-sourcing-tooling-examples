@@ -178,10 +178,8 @@ DOCBLOCK;
     }
 
     private function generateCommand (string $commandClassName, array $commandSpecification): string {
-        $dockBlockCode = $this->generateMessageDocBlock($commandSpecification);
-
         return <<<PHP
-{$dockBlockCode}
+{$this->generateMessageDocBlock($commandSpecification)}
 final class {$commandClassName} implements \Acme\Infra\EventSourcing\Command {
 {$this->generateMessageConstructor($commandSpecification)}
 {$this->generateMessageAttributes($commandSpecification)}
