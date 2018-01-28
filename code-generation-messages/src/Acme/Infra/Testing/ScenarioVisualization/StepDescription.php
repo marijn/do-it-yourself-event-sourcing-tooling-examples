@@ -4,7 +4,6 @@ namespace Acme\Infra\Testing\ScenarioVisualization;
 
 use Acme\Infra\EventSourcing\Command;
 use Acme\Infra\EventSourcing\Event;
-use function Acme\Infra\EventSourcing\fully_qualified_class_name_to_canonical;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
@@ -19,8 +18,7 @@ abstract class StepDescription {
 
     static function forCommand (Command $command): StepDescription {
         return new CommandDescription(
-            fully_qualified_class_name_to_canonical(get_class($command)),
-            $command->rawMessagePayload()
+            $command
         );
     }
 

@@ -2,6 +2,9 @@
 
 namespace Acme\Infra\Testing\ScenarioVisualization;
 
+use Acme\Infra\EventSourcing\Command;
+use function Acme\Infra\EventSourcing\fully_qualified_class_name_to_canonical;
+
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
@@ -10,9 +13,9 @@ final class CommandDescription extends StepDescription {
     private $commandName;
     private $data;
 
-    function __construct (string $commandName, array $data) {
-        $this->commandName = $commandName;
-        $this->data = $data;
+    function __construct (Command $command) {
+        $this->commandName = fully_qualified_class_name_to_canonical(get_class($command));
+        $this->data = $command->rawMessagePayload();
     }
 
     function toHtml (): string {
