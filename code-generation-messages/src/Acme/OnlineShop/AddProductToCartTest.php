@@ -33,6 +33,35 @@ final class AddProductToCartTest extends EventSourcedCommandHandlerTestCase {
             ->assert();
     }
 
+    /**
+     * @test
+     * @dataProvider provide cartId customerId sku priceInCents currency and transactionTime
+     */
+    function ignore AddProductToCart when ProductWasAddedToCart already (
+        string $cartId,
+        string $customerId,
+        string $sku,
+        int $priceInCents,
+        string $currency,
+        string $transactionTime
+    ): void {
+        $this->scenario
+            ->given(
+                CustomerStartedShopping::withCartId($cartId)
+                    ->andWithCustomerId($customerId),
+
+                ProductWasAddedToCart::withCartId($cartId)
+                    ->andWithCustomerId($customerId)
+                    ->andWithSku($sku)
+                    ->andWithPriceInCents($priceInCents)
+                    ->andWithCurrency($currency)
+                    ->andWithAddedAt($transactionTime)
+            )
+            ->when(new AddProductToCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
+            ->thenNothing()
+            ->assert();
+    }
+
     static public function provide cartId customerId sku priceInCents currency and transactionTime(): array {
         $faker = Factory::create();
 

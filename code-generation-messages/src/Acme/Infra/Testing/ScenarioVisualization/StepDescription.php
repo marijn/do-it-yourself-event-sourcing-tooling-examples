@@ -11,6 +11,7 @@ use Acme\Infra\EventSourcing\Event;
 abstract class StepDescription {
 
     static function forEvent (Event $event): StepDescription { return new EventDescription($event); }
+    static function forEvents (Event ... $event): StepDescription { return new EventsDescription(... $event); }
     static function forCommand (Command $command): StepDescription { return new CommandDescription($command); }
     static function forHotspot (string $hotspot, string $detail): StepDescription { return new HotspotDescription($hotspot, $detail); }
     static function forScenario (string $scenario, string $detail): StepDescription { return new ScenarioDescription($scenario, $detail); }
