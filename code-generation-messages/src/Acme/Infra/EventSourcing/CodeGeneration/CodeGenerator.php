@@ -203,8 +203,7 @@ PHP;
 
         $docBlocks[] = '@api';
         $docBlocks[] = '@category generated';
-        $dockBlockCode = $this->generateDockBlocks(... $docBlocks);
 
-        return $dockBlockCode;
+        return $this->generateDockBlocks(... $docBlocks);
     }
 }
