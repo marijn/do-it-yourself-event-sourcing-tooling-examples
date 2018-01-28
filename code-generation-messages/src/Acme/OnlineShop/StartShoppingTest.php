@@ -3,6 +3,7 @@
 namespace Acme\OnlineShop;
 
 use Acme\Infra\EventSourcing\Testing\EventSourcedCommandHandlerTestCase;
+use Faker\Factory;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -34,11 +35,13 @@ final class StartShoppingTest extends EventSourcedCommandHandlerTestCase {
     }
 
     static public function provide cartId customerId and startTime(): array {
+        $faker = Factory::create();
+
         return [
             'with consistent example data' => [
                 'cartId' => (string) Uuid::uuid4(),
                 'customerId' => (string) Uuid::uuid4(),
-                'startTime' => '2017-10-07T09:12:15.999999+0000',
+                'startTime' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format('Y-m-d\TH:i:s.uO'),
             ]
         ];
     }

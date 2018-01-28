@@ -5,6 +5,8 @@
   "require": {
     "danielstjules/stringy": "String manipulation library (patch releases allowed because the vendor is reliable)",
     "danielstjules/stringy": "^3.1.0",
+    "fzaninotto/faker": "Fake data generation library (patch releases allowed because the vendor is reliable)",
+    "fzaninotto/faker": "^1.7.1",
     "ramsey/uuid": "UUID generation library (patch releases allowed because the vendor is reliable)",
     "ramsey/uuid": "^3.7.3",
     "symfony/yaml": "YAML Parser (loose version because reliable vendor)",

@@ -10,4 +10,5 @@ return array(
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );
