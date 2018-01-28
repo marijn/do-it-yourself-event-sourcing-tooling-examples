@@ -2,6 +2,7 @@
 
 namespace Acme\Infra\EventSourcing\CodeGeneration;
 
+use Stringy\Stringy;
 use function Acme\Infra\EventSourcing\canonical_to_fully_qualified;
 
 /**
@@ -101,10 +102,79 @@ PHP;
     }
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
+        $exampleValues = [];
+
+        foreach ($eventSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $exampleValues[$attribute] = $attributeSpecification['example'];
+        }
+
+        $exampleValueAssignment = var_export($exampleValues, true);
+        $exampleValueCode = <<<PHP
+private const exampleValues = {$exampleValueAssignment};
+PHP;
+
+        $identifier = $eventSpecification['identifier'];
+        $idFactoryMethod = Stringy::create($identifier)->upperCaseFirst()->prepend('with');
+        $typeConstraint = $this->typeConstraintOfAttribute($eventSpecification['attributes'][$identifier]);
+
+        $constructorArguments = [];
+
+        foreach ($eventSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $constructorArguments[] = <<<PHP
+\$payload['{$attribute}'],
+PHP;
+        }
+
+        $constructorArgumentCode = rtrim(implode(PHP_EOL, $constructorArguments), ',');
+        $fromPayloadFactoryCode = <<<PHP
+static function fromPayload(array \$payload): {$eventClassName} {
+    return new {$eventClassName}(
+        {$constructorArgumentCode}
+    ); 
+}
+PHP;
+
+        $factoryCode = <<<PHP
+static function {$idFactoryMethod}(${typeConstraint} \${$identifier}): {$eventClassName} {
+    \$payload = {$eventClassName}::exampleValues;
+    \$payload['{$identifier}'] = \${$identifier};
+
+    return {$eventClassName}::fromPayload(\$payload); 
+}
+PHP;
+
+
+        $modifiers = [];
+
+        foreach ($eventSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            if ($attribute !== $eventSpecification['identifier'])
+            {
+                $methodName = Stringy::create($attribute)->upperCaseFirst()->prepend('andWith');
+                $typeConstraint = $this->typeConstraintOfAttribute($attributeSpecification);
+                $modifiers[] = <<<PHP
+function {$methodName}({$typeConstraint} \${$attribute}): {$eventClassName} {
+    \$modified = clone \$this;
+    \$modified->{$attribute} = \${$attribute};
+    
+    return \$modified;
+}
+PHP;
+}
+        }
+
+        $modifierCode = implode(PHP_EOL, $modifiers);
+
         return <<<PHP
 {$this->generateMessageDocBlock($eventSpecification)}
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
+{$exampleValueCode}
+{$factoryCode}
+{$fromPayloadFactoryCode}
+{$modifierCode}
 {$this->generateMessageAttributes($eventSpecification)}
 {$this->generateRawMessagePayload($eventSpecification)}
 }

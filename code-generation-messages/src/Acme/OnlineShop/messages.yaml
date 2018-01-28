@@ -2,6 +2,7 @@ Acme\OnlineShop:
   events:
     CustomerStartedShopping:
       doc: 'When the customer enters the online shop the `CustomerStartedShopping` event is recorded.'
+      identifier: cartId
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
@@ -11,6 +12,7 @@ Acme\OnlineShop:
           example: '2017-05-09 09:05:02.999999+0000'
 
     ProductWasAddedToCart:
+      identifier: cartId
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
@@ -28,6 +30,7 @@ Acme\OnlineShop:
           example: '2017-05-09 09:07:12.999999+0000'
 
     ProductWasRemovedFromCart:
+      identifier: cartId
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
@@ -45,6 +48,7 @@ Acme\OnlineShop:
           example: '2017-05-09 09:09:59.999999+0000'
 
     CustomerPlacedOrder:
+      identifier: cartId
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
@@ -70,6 +74,7 @@ Acme\OnlineShop:
 
     CustomerAbandonedCart:
       doc: 'After an extended period of no activity the `CustomerStartedShopping` event is recorded.'
+      identifier: cartId
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'

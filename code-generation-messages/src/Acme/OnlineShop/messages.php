@@ -35,6 +35,41 @@ namespace Acme\OnlineShop {
             $this->startedShoppingAt = $startedShoppingAt;
         }
 
+        private const exampleValues = [
+            'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
+            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
+            'startedShoppingAt' => '2017-05-09 09:05:02.999999+0000',
+        ];
+
+        static function withCartId (string $cartId): CustomerStartedShopping {
+            $payload = CustomerStartedShopping::exampleValues;
+            $payload['cartId'] = $cartId;
+
+            return CustomerStartedShopping::fromPayload($payload);
+        }
+
+        static function fromPayload (array $payload): CustomerStartedShopping {
+            return new CustomerStartedShopping(
+                $payload['cartId'],
+                $payload['customerId'],
+                $payload['startedShoppingAt']
+            );
+        }
+
+        function andWithCustomerId (string $customerId): CustomerStartedShopping {
+            $modified = clone $this;
+            $modified->customerId = $customerId;
+
+            return $modified;
+        }
+
+        function andWithStartedShoppingAt (string $startedShoppingAt): CustomerStartedShopping {
+            $modified = clone $this;
+            $modified->startedShoppingAt = $startedShoppingAt;
+
+            return $modified;
+        }
+
         private $cartId;
 
         function cartId (): string { return $this->cartId; }
@@ -86,6 +121,68 @@ namespace Acme\OnlineShop {
             $this->priceInCents = $priceInCents;
             $this->currency = $currency;
             $this->addedAt = $addedAt;
+        }
+
+        private const exampleValues = [
+            'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
+            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
+            'sku' => 'ACME-001',
+            'priceInCents' => 1299,
+            'currency' => 'EUR',
+            'addedAt' => '2017-05-09 09:07:12.999999+0000',
+        ];
+
+        static function withCartId (string $cartId): ProductWasAddedToCart {
+            $payload = ProductWasAddedToCart::exampleValues;
+            $payload['cartId'] = $cartId;
+
+            return ProductWasAddedToCart::fromPayload($payload);
+        }
+
+        static function fromPayload (array $payload): ProductWasAddedToCart {
+            return new ProductWasAddedToCart(
+                $payload['cartId'],
+                $payload['customerId'],
+                $payload['sku'],
+                $payload['priceInCents'],
+                $payload['currency'],
+                $payload['addedAt']
+            );
+        }
+
+        function andWithCustomerId (string $customerId): ProductWasAddedToCart {
+            $modified = clone $this;
+            $modified->customerId = $customerId;
+
+            return $modified;
+        }
+
+        function andWithSku (string $sku): ProductWasAddedToCart {
+            $modified = clone $this;
+            $modified->sku = $sku;
+
+            return $modified;
+        }
+
+        function andWithPriceInCents (int $priceInCents): ProductWasAddedToCart {
+            $modified = clone $this;
+            $modified->priceInCents = $priceInCents;
+
+            return $modified;
+        }
+
+        function andWithCurrency (string $currency): ProductWasAddedToCart {
+            $modified = clone $this;
+            $modified->currency = $currency;
+
+            return $modified;
+        }
+
+        function andWithAddedAt (string $addedAt): ProductWasAddedToCart {
+            $modified = clone $this;
+            $modified->addedAt = $addedAt;
+
+            return $modified;
         }
 
         private $cartId;
@@ -156,6 +253,68 @@ namespace Acme\OnlineShop {
             $this->removedAt = $removedAt;
         }
 
+        private const exampleValues = [
+            'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
+            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
+            'sku' => 'ACME-001',
+            'priceInCents' => 1299,
+            'currency' => 'EUR',
+            'removedAt' => '2017-05-09 09:09:59.999999+0000',
+        ];
+
+        static function withCartId (string $cartId): ProductWasRemovedFromCart {
+            $payload = ProductWasRemovedFromCart::exampleValues;
+            $payload['cartId'] = $cartId;
+
+            return ProductWasRemovedFromCart::fromPayload($payload);
+        }
+
+        static function fromPayload (array $payload): ProductWasRemovedFromCart {
+            return new ProductWasRemovedFromCart(
+                $payload['cartId'],
+                $payload['customerId'],
+                $payload['sku'],
+                $payload['priceInCents'],
+                $payload['currency'],
+                $payload['removedAt']
+            );
+        }
+
+        function andWithCustomerId (string $customerId): ProductWasRemovedFromCart {
+            $modified = clone $this;
+            $modified->customerId = $customerId;
+
+            return $modified;
+        }
+
+        function andWithSku (string $sku): ProductWasRemovedFromCart {
+            $modified = clone $this;
+            $modified->sku = $sku;
+
+            return $modified;
+        }
+
+        function andWithPriceInCents (int $priceInCents): ProductWasRemovedFromCart {
+            $modified = clone $this;
+            $modified->priceInCents = $priceInCents;
+
+            return $modified;
+        }
+
+        function andWithCurrency (string $currency): ProductWasRemovedFromCart {
+            $modified = clone $this;
+            $modified->currency = $currency;
+
+            return $modified;
+        }
+
+        function andWithRemovedAt (string $removedAt): ProductWasRemovedFromCart {
+            $modified = clone $this;
+            $modified->removedAt = $removedAt;
+
+            return $modified;
+        }
+
         private $cartId;
 
         function cartId (): string { return $this->cartId; }
@@ -221,6 +380,75 @@ namespace Acme\OnlineShop {
             $this->orderPlacedAt = $orderPlacedAt;
         }
 
+        private const exampleValues = [
+            'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
+            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
+            'orderId' => 'CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC',
+            'orderLines' =>
+                [
+                    0 =>
+                        [
+                            'sku' => 'ACME-001',
+                            'quantity' => 2,
+                            'priceInCents' => 1299,
+                            'currency' => 'EUR',
+                        ],
+                    1 =>
+                        [
+                            'sku' => 'ACME-007',
+                            'quantity' => 1,
+                            'priceInCents' => 1499,
+                            'currency' => 'EUR',
+                        ],
+                ],
+            'orderPlacedAt' => '2017-05-09 09:07:12.999999+0000',
+        ];
+
+        static function withCartId (string $cartId): CustomerPlacedOrder {
+            $payload = CustomerPlacedOrder::exampleValues;
+            $payload['cartId'] = $cartId;
+
+            return CustomerPlacedOrder::fromPayload($payload);
+        }
+
+        static function fromPayload (array $payload): CustomerPlacedOrder {
+            return new CustomerPlacedOrder(
+                $payload['cartId'],
+                $payload['customerId'],
+                $payload['orderId'],
+                $payload['orderLines'],
+                $payload['orderPlacedAt']
+            );
+        }
+
+        function andWithCustomerId (string $customerId): CustomerPlacedOrder {
+            $modified = clone $this;
+            $modified->customerId = $customerId;
+
+            return $modified;
+        }
+
+        function andWithOrderId (string $orderId): CustomerPlacedOrder {
+            $modified = clone $this;
+            $modified->orderId = $orderId;
+
+            return $modified;
+        }
+
+        function andWithOrderLines (array $orderLines): CustomerPlacedOrder {
+            $modified = clone $this;
+            $modified->orderLines = $orderLines;
+
+            return $modified;
+        }
+
+        function andWithOrderPlacedAt (string $orderPlacedAt): CustomerPlacedOrder {
+            $modified = clone $this;
+            $modified->orderPlacedAt = $orderPlacedAt;
+
+            return $modified;
+        }
+
         private $cartId;
 
         function cartId (): string { return $this->cartId; }
@@ -275,6 +503,41 @@ namespace Acme\OnlineShop {
             $this->cartId = $cartId;
             $this->customerId = $customerId;
             $this->abandonedAt = $abandonedAt;
+        }
+
+        private const exampleValues = [
+            'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
+            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
+            'abandonedAt' => '2017-05-09 10:09:59.999999+0000',
+        ];
+
+        static function withCartId (string $cartId): CustomerAbandonedCart {
+            $payload = CustomerAbandonedCart::exampleValues;
+            $payload['cartId'] = $cartId;
+
+            return CustomerAbandonedCart::fromPayload($payload);
+        }
+
+        static function fromPayload (array $payload): CustomerAbandonedCart {
+            return new CustomerAbandonedCart(
+                $payload['cartId'],
+                $payload['customerId'],
+                $payload['abandonedAt']
+            );
+        }
+
+        function andWithCustomerId (string $customerId): CustomerAbandonedCart {
+            $modified = clone $this;
+            $modified->customerId = $customerId;
+
+            return $modified;
+        }
+
+        function andWithAbandonedAt (string $abandonedAt): CustomerAbandonedCart {
+            $modified = clone $this;
+            $modified->abandonedAt = $abandonedAt;
+
+            return $modified;
         }
 
         private $cartId;
