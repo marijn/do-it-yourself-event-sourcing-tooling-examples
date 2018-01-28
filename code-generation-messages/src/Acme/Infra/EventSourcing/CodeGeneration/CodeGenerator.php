@@ -60,9 +60,7 @@ DOCBLOCK;
 
         return <<<PHP
 {$docBlock}
-function __construct(
-    {$this->generateConstructorParametersList($messageSpecification)}
-) {
+function __construct({$this->generateConstructorParametersList($messageSpecification)}) {
     {$this->generateConstructorAttributeAssignment($messageSpecification)}
 }
 PHP;
