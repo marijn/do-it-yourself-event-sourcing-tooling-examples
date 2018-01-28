@@ -56,10 +56,8 @@ PHP;
 DOCBLOCK;
         }
 
-        $docBlock = $this->generateDockBlocks(... $docBlocks);
-
         return <<<PHP
-{$docBlock}
+{$this->generateDockBlocks(... $docBlocks)}
 function __construct({$this->generateConstructorParametersList($messageSpecification)}) {
     {$this->generateConstructorAttributeAssignment($messageSpecification)}
 }
