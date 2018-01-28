@@ -76,9 +76,7 @@ function {$attribute}(): {$typeConstraint} { return \$this->{$attribute}; }
 PHP;
         }
 
-        $eventAttributesCode = implode(PHP_EOL, $eventAttributes);
-
-        return $eventAttributesCode;
+        return implode(PHP_EOL, $eventAttributes);
     }
 
     private function generateRawMessagePayload (array $messageSpecification): string {
