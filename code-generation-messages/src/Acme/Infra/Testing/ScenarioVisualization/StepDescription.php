@@ -11,15 +11,11 @@ use Acme\Infra\EventSourcing\Event;
 abstract class StepDescription {
 
     static function forEvent (Event $event): StepDescription {
-        return new EventDescription(
-            $event
-        );
+        return new EventDescription($event);
     }
 
     static function forCommand (Command $command): StepDescription {
-        return new CommandDescription(
-            $command
-        );
+        return new CommandDescription($command);
     }
 
     static function forHotspot (string $hotspot, string $detail): StepDescription {
