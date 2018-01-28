@@ -163,9 +163,7 @@ PHP;
 PHP;
         }
 
-        $constructorAttributesCode = implode(PHP_EOL, $constructorAttributes);
-
-        return $constructorAttributesCode;
+        return implode(PHP_EOL, $constructorAttributes);
     }
 
     private function generateDockBlocks (string ... $docBlocks): string {
