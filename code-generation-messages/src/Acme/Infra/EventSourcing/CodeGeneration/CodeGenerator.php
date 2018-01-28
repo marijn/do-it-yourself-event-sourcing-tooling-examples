@@ -85,6 +85,27 @@ PHP;
         return $eventAttributesCode;
     }
 
+    private function generateRawMessagePayload (array $messageSpecification): string {
+        $attributeToValues = [];
+
+        foreach ($messageSpecification['attributes'] as $attribute => $attributeSpecification)
+        {
+            $attributeToValues[] = <<<PHP
+'{$attribute}' => \$this->{$attribute},
+PHP;
+        }
+
+        $attributeToValuesCode = implode(PHP_EOL, $attributeToValues);
+
+        return <<<PHP
+function rawMessagePayload(): array {
+    return [
+        {$attributeToValuesCode}
+    ];
+}
+PHP;
+    }
+
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
         $docBlocks = [];
 
@@ -102,6 +123,7 @@ PHP;
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
 {$this->generateMessageAttributes($eventSpecification)}
+{$this->generateRawMessagePayload($eventSpecification)}
 }
 PHP;
     }
@@ -191,6 +213,7 @@ DOCBLOCK;
 final class {$commandClassName} implements \Acme\Infra\EventSourcing\Command {
 {$this->generateMessageConstructor($commandSpecification)}
 {$this->generateMessageAttributes($commandSpecification)}
+{$this->generateRawMessagePayload($commandSpecification)}
 }
 PHP;
     }

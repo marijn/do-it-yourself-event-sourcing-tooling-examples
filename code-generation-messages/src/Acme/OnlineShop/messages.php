@@ -46,6 +46,14 @@ namespace Acme\OnlineShop {
         private $startedShoppingAt;
 
         function startedShoppingAt (): string { return $this->startedShoppingAt; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
+                'startedShoppingAt' => $this->startedShoppingAt,
+            ];
+        }
     }
 
     /**
@@ -103,6 +111,17 @@ namespace Acme\OnlineShop {
         private $addedAt;
 
         function addedAt (): string { return $this->addedAt; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
+                'sku' => $this->sku,
+                'priceInCents' => $this->priceInCents,
+                'currency' => $this->currency,
+                'addedAt' => $this->addedAt,
+            ];
+        }
     }
 
     /**
@@ -160,6 +179,17 @@ namespace Acme\OnlineShop {
         private $removedAt;
 
         function removedAt (): string { return $this->removedAt; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
+                'sku' => $this->sku,
+                'priceInCents' => $this->priceInCents,
+                'currency' => $this->currency,
+                'removedAt' => $this->removedAt,
+            ];
+        }
     }
 
     /**
@@ -210,6 +240,16 @@ namespace Acme\OnlineShop {
         private $orderPlacedAt;
 
         function orderPlacedAt (): string { return $this->orderPlacedAt; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
+                'orderId' => $this->orderId,
+                'orderLines' => $this->orderLines,
+                'orderPlacedAt' => $this->orderPlacedAt,
+            ];
+        }
     }
 
     /**
@@ -248,6 +288,14 @@ namespace Acme\OnlineShop {
         private $abandonedAt;
 
         function abandonedAt (): string { return $this->abandonedAt; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
+                'abandonedAt' => $this->abandonedAt,
+            ];
+        }
     }
 
     /**
@@ -286,6 +334,14 @@ namespace Acme\OnlineShop {
         private $startTime;
 
         function startTime (): string { return $this->startTime; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
+                'startTime' => $this->startTime,
+            ];
+        }
     }
 
     /**
@@ -336,6 +392,16 @@ namespace Acme\OnlineShop {
         private $transactionTime;
 
         function transactionTime (): string { return $this->transactionTime; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'sku' => $this->sku,
+                'priceInCents' => $this->priceInCents,
+                'currency' => $this->currency,
+                'transactionTime' => $this->transactionTime,
+            ];
+        }
     }
 
     /**
@@ -386,6 +452,16 @@ namespace Acme\OnlineShop {
         private $transactionTime;
 
         function transactionTime (): string { return $this->transactionTime; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'sku' => $this->sku,
+                'priceInCents' => $this->priceInCents,
+                'currency' => $this->currency,
+                'transactionTime' => $this->transactionTime,
+            ];
+        }
     }
 
     /**
@@ -415,5 +491,12 @@ namespace Acme\OnlineShop {
         private $orderTime;
 
         function orderTime (): string { return $this->orderTime; }
+
+        function rawMessagePayload (): array {
+            return [
+                'cartId' => $this->cartId,
+                'orderTime' => $this->orderTime,
+            ];
+        }
     }
 }

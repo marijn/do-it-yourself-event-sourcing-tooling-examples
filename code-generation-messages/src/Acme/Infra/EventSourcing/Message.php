@@ -7,4 +7,5 @@ namespace Acme\Infra\EventSourcing;
  */
 interface Message {
 
+    function rawMessagePayload(): array;
 }
