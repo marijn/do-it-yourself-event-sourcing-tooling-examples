@@ -101,10 +101,8 @@ PHP;
     }
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
-        $dockBlockCode = $this->generateMessageDocBlock($eventSpecification);
-
         return <<<PHP
-{$dockBlockCode}
+{$this->generateMessageDocBlock($eventSpecification)}
 final class {$eventClassName} implements \Acme\Infra\EventSourcing\Event {
 {$this->generateMessageConstructor($eventSpecification)}
 {$this->generateMessageAttributes($eventSpecification)}

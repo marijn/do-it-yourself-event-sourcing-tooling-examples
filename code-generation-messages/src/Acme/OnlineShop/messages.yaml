@@ -1,49 +1,82 @@
-Acme.OnlineShop:
+Acme\OnlineShop:
   events:
     CustomerStartedShopping:
       doc: 'When the customer enters the online shop the `CustomerStartedShopping` event is recorded.'
       attributes:
-        cartId: ~
-        customerId: ~
-        startedShoppingAt: ~
+        cartId:
+          example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
+        customerId:
+          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
+        startedShoppingAt:
+          example: '2017-05-09 09:05:02.999999+0000'
 
     ProductWasAddedToCart:
       attributes:
-        cartId: ~
-        customerId: ~
+        cartId:
+          example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
+        customerId:
+          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
         sku:
           doc: 'The "Stock Keeping Unit" from the Product Catalog 2.0'
+          example: 'ACME-001'
         priceInCents:
           constrainType: 'int'
-        currency: ~
-        addedAt: ~
+          example: 1299
+        currency:
+          example: 'EUR'
+        addedAt:
+          example: '2017-05-09 09:07:12.999999+0000'
 
     ProductWasRemovedFromCart:
       attributes:
-        cartId: ~
-        customerId: ~
+        cartId:
+          example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
+        customerId:
+          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
         sku:
           doc: 'The "Stock Keeping Unit" from the Product Catalog 2.0'
+          example: 'ACME-001'
         priceInCents:
           constrainType: 'int'
-        currency: ~
-        removedAt: ~
+          example: 1299
+        currency:
+          example: 'EUR'
+        removedAt:
+          example: '2017-05-09 09:09:59.999999+0000'
 
     CustomerPlacedOrder:
       attributes:
-        cartId: ~
-        customerId: ~
-        orderId: ~
+        cartId:
+          example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
+        customerId:
+          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
+        orderId:
+          example: 'CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC'
         orderLines:
           constrainType: 'array'
-        orderPlacedAt: ~
+          example:
+            -
+              sku: 'ACME-001'
+              quantity: 2
+              priceInCents: 1299
+              currency: 'EUR'
+            -
+              sku: 'ACME-007'
+              quantity: 1
+              priceInCents: 1499
+              currency: 'EUR'
+        orderPlacedAt:
+          example: '2017-05-09 09:07:12.999999+0000'
 
     CustomerAbandonedCart:
       doc: 'After an extended period of no activity the `CustomerStartedShopping` event is recorded.'
       attributes:
-        cartId: ~
-        customerId: ~
-        abandonedAt: ~
+        cartId:
+          example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
+        customerId:
+          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
+        abandonedAt:
+          example: '2017-05-09 10:09:59.999999+0000'
 
   commands:
     StartShopping:
