@@ -5,6 +5,6 @@ namespace Acme\Infra\EventSourcing;
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-interface Event {
+interface Event extends Message {
 
 }
