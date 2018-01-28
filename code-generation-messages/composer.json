@@ -3,6 +3,8 @@
   "license": "proprietary",
   "type": "project",
   "require": {
+    "danielstjules/stringy": "String manipulation library (patch releases allowed because the vendor is reliable)",
+    "danielstjules/stringy": "^3.1.0",
     "symfony/yaml": "YAML Parser (loose version because reliable vendor)",
     "symfony/yaml": "^3.2"
   },

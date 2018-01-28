@@ -2,13 +2,14 @@
 
 namespace Acme\Infra\EventSourcing\Testing;
 
-use Acme\Infra\TestScenario;
+use Acme\Infra\Testing\ScenarioTestRunner;
+use Acme\Infra\Testing\TestScenario;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-abstract class EventSourcedCommandHandlerTestCase extends TestCase {
+abstract class EventSourcedCommandHandlerTestCase extends TestCase implements ScenarioTestRunner {
 
     /** @var \Acme\Infra\EventSourcing\Testing\EventSourcedCommandHandlerScenario */
     protected $scenario;
@@ -26,4 +27,6 @@ abstract class EventSourcedCommandHandlerTestCase extends TestCase {
 
         assertThat($this->scenario, isInstanceOf(TestScenario::class));
     }
+
+    function scenario (): TestScenario { return $this->scenario; }
 }

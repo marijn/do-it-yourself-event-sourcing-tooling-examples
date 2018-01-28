@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
+    '65fec9ebcfbb3cbb4fd0d519687aea01' => $vendorDir . '/danielstjules/stringy/src/Create.php',
     'e050abfbc8f56b7048f9dd6785c2704d' => $baseDir . '/src/Acme/OnlineShop/messages.php',
     'fab84e1d0e5343ba2e54c79e364c03f2' => $baseDir . '/src/Acme/Infra/EventSourcing/functions.php',
 );

@@ -5,4 +5,7 @@
             <directory>./src</directory>
         </testsuite>
     </testsuites>
+    <listeners>
+        <listener class="Acme\Infra\Testing\ScenarioVisualization\VisualizeScenario" />
+    </listeners>
 </phpunit>
