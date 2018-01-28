@@ -618,14 +618,14 @@ namespace Acme\OnlineShop {
          *
          * @param string $cartId
          * @param string $sku
-         * @param string $priceInCents
+         * @param int $priceInCents
          * @param string $currency Per cart only a single currency is supported
          * @param string $transactionTime
          */
         function __construct (
             string $cartId,
             string $sku,
-            string $priceInCents,
+            int $priceInCents,
             string $currency,
             string $transactionTime
         ) {
@@ -646,7 +646,7 @@ namespace Acme\OnlineShop {
 
         private $priceInCents;
 
-        function priceInCents (): string { return $this->priceInCents; }
+        function priceInCents (): int { return $this->priceInCents; }
 
         private $currency;
 
@@ -678,14 +678,14 @@ namespace Acme\OnlineShop {
          *
          * @param string $cartId
          * @param string $sku
-         * @param string $priceInCents
+         * @param int $priceInCents
          * @param string $currency Per cart only a single currency is supported
          * @param string $transactionTime
          */
         function __construct (
             string $cartId,
             string $sku,
-            string $priceInCents,
+            int $priceInCents,
             string $currency,
             string $transactionTime
         ) {
@@ -706,7 +706,7 @@ namespace Acme\OnlineShop {
 
         private $priceInCents;
 
-        function priceInCents (): string { return $this->priceInCents; }
+        function priceInCents (): int { return $this->priceInCents; }
 
         private $currency;
 

@@ -95,7 +95,8 @@ Acme\OnlineShop:
       attributes:
         cartId: ~
         sku: ~
-        priceInCents: ~
+        priceInCents:
+          constrainType: 'int'
         currency:
           doc: "Per cart only a single currency is supported"
         transactionTime: ~
@@ -104,7 +105,8 @@ Acme\OnlineShop:
       attributes:
         cartId: ~
         sku: ~
-        priceInCents: ~
+        priceInCents:
+          constrainType: 'int'
         currency:
           doc: "Per cart only a single currency is supported"
         transactionTime: ~
