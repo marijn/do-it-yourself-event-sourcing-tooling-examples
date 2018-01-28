@@ -2,6 +2,9 @@
 
 namespace Acme\Infra\Testing\ScenarioVisualization;
 
+use Acme\Infra\EventSourcing\Event;
+use function Acme\Infra\EventSourcing\fully_qualified_class_name_to_canonical;
+
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
@@ -10,9 +13,9 @@ final class EventDescription extends StepDescription {
     private $eventName;
     private $data;
 
-    function __construct (string $eventName, array $data) {
-        $this->eventName = $eventName;
-        $this->data = $data;
+    function __construct (Event $event) {
+        $this->eventName = fully_qualified_class_name_to_canonical(get_class($event));
+        $this->data = $event->rawMessagePayload();
     }
 
     function toHtml (): string {

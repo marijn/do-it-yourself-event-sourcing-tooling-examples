@@ -13,8 +13,7 @@ abstract class StepDescription {
 
     static function forEvent (Event $event): StepDescription {
         return new EventDescription(
-            fully_qualified_class_name_to_canonical(get_class($event)),
-            $event->rawMessagePayload()
+            $event
         );
     }
 
