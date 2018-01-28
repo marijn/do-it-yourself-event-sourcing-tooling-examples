@@ -5,7 +5,6 @@ namespace Acme\OnlineShop;
 use Acme\Infra\EventSourcing\Testing\EventSourcedCommandHandlerTestCase;
 use Acme\Infra\Standards;
 use Faker\Factory;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
