@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInite249306b8c7ac427060268586f916aff
 {
     public static $files = array (
+        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         'e050abfbc8f56b7048f9dd6785c2704d' => __DIR__ . '/../..' . '/src/Acme/OnlineShop/messages.php',
@@ -19,6 +20,10 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
             'Stringy\\' => 8,
+        ),
+        'R' => 
+        array (
+            'Ramsey\\Uuid\\' => 12,
         ),
     );
 
@@ -34,6 +39,10 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
         'Stringy\\' => 
         array (
             0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
+        ),
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
     );
 

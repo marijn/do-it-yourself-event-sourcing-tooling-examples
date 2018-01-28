@@ -3,6 +3,7 @@
 namespace Acme\OnlineShop;
 
 use Acme\Infra\EventSourcing\Testing\EventSourcedCommandHandlerTestCase;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
@@ -35,8 +36,8 @@ final class StartShoppingTest extends EventSourcedCommandHandlerTestCase {
     static public function provide cartId customerId and startTime(): array {
         return [
             'with consistent example data' => [
-                'cartId' => 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-                'customerId' => 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+                'cartId' => (string) Uuid::uuid4(),
+                'customerId' => (string) Uuid::uuid4(),
                 'startTime' => '2017-10-07T09:12:15.999999+0000',
             ]
         ];
