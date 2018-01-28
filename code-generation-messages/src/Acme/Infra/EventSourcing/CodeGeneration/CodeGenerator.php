@@ -200,9 +200,10 @@ DOCBLOCK;
 
         $docBlocks[] = '@api';
         $docBlocks[] = '@category generated';
+        $dockBlockCode = $this->generateDockBlocks(... $docBlocks);
 
         return <<<PHP
-{$this->generateDockBlocks(... $docBlocks)}
+{$dockBlockCode}
 final class {$commandClassName} implements \Acme\Infra\EventSourcing\Command {
 {$this->generateMessageConstructor($commandSpecification)}
 {$this->generateMessageAttributes($commandSpecification)}
