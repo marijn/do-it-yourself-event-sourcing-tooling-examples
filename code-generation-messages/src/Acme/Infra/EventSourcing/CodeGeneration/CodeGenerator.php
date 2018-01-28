@@ -101,17 +101,7 @@ PHP;
     }
 
     private function generateEvent (string $eventClassName, array $eventSpecification): string {
-        $docBlocks = [];
-
-        if (array_key_exists('doc', $eventSpecification))
-        {
-            $docBlocks[] = $eventSpecification['doc'];
-            $docBlocks[] = '';
-        }
-
-        $docBlocks[] = '@api';
-        $docBlocks[] = '@category generated';
-        $dockBlockCode = $this->generateDockBlocks(... $docBlocks);
+        $dockBlockCode = $this->generateMessageDocBlock($eventSpecification);
 
         return <<<PHP
 {$dockBlockCode}
@@ -190,17 +180,7 @@ DOCBLOCK;
     }
 
     private function generateCommand (string $commandClassName, array $commandSpecification): string {
-        $docBlocks = [];
-
-        if (array_key_exists('doc', $commandSpecification))
-        {
-            $docBlocks[] = $commandSpecification['doc'];
-            $docBlocks[] = '';
-        }
-
-        $docBlocks[] = '@api';
-        $docBlocks[] = '@category generated';
-        $dockBlockCode = $this->generateDockBlocks(... $docBlocks);
+        $dockBlockCode = $this->generateMessageDocBlock($commandSpecification);
 
         return <<<PHP
 {$dockBlockCode}
@@ -210,5 +190,21 @@ final class {$commandClassName} implements \Acme\Infra\EventSourcing\Command {
 {$this->generateRawMessagePayload($commandSpecification)}
 }
 PHP;
+    }
+
+    private function generateMessageDocBlock (array $messageSpecification): string {
+        $docBlocks = [];
+
+        if (array_key_exists('doc', $messageSpecification))
+        {
+            $docBlocks[] = $messageSpecification['doc'];
+            $docBlocks[] = '';
+        }
+
+        $docBlocks[] = '@api';
+        $docBlocks[] = '@category generated';
+        $dockBlockCode = $this->generateDockBlocks(... $docBlocks);
+
+        return $dockBlockCode;
     }
 }
