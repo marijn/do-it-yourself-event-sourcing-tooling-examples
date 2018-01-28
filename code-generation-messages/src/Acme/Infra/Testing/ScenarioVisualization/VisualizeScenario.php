@@ -27,9 +27,8 @@ final class VisualizeScenario implements TestListener {
             return;
         }
 
-        $fullTestName = Stringy::create($test->toString());
-        $scenario = $fullTestName->substr($fullTestName->indexOf('::') + 2)->humanize();
-        $testName = fully_qualified_class_name_to_canonical((string) $fullTestName->substr(0, $fullTestName->indexOf('::'))->replace('Test', ''));
+        $scenario = Stringy::create($test->getName(false))->humanize();
+        $testName = fully_qualified_class_name_to_canonical((string) Stringy::create(get_class($test))->replace('Test', ''));
         $description = StepDescription::forScenario($testName, (string) $scenario);
         $visualScenario = $test->scenario()->visualScenario()->withDescription($description);
         $docsDirectory = Stringy::create('docs')->append('/')->append($testName)->replace('.', '/')->append('/');
