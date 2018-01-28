@@ -39,8 +39,8 @@ final class StartShoppingTest extends EventSourcedCommandHandlerTestCase {
 
         return [
             'with consistent example data' => [
-                'cartId' => (string) Uuid::uuid4(),
-                'customerId' => (string) Uuid::uuid4(),
+                'cartId' => $faker->uuid,
+                'customerId' => $faker->uuid,
                 'startTime' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format('Y-m-d\TH:i:s.uO'),
             ]
         ];
