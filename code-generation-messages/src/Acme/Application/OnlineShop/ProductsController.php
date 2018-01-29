@@ -2,16 +2,14 @@
 
 namespace Acme\Application\OnlineShop;
 
+use Acme\Infra\UI\Controller;
 use Acme\OnlineShop\ProductRepository;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Templating\EngineInterface as TemplatingEngine;
 use Zend\Diactoros\Response\HtmlResponse;
 
-/**
- * @copyright Marijn Huizendveld 2018. All rights reserved.
- */
-final class ProductsController {
+final class ProductsController implements Controller {
 
     private $products;
     private $templating;
