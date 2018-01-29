@@ -8,6 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 
 const errorOnInvalidUsage = 1;
 const errorOnFileReadingProblems = 2;
+const errorOnUnexpectedResponse = 3;
 
 $stdout = fopen('php://stdout', 'w');
 $stderr = fopen('php://stderr', 'w');
@@ -30,16 +31,25 @@ if (count($argv) < 3 || count($argv) > 3)
 
 $dslUri = $argv[1];
 $type = $argv[2];
-$generatorFactory = new CodeGeneratorFactory();
-$cg = $generatorFactory->get($type);
-$dslFile = @file_get_contents($dslUri);
 
-if (false === $dslFile)
+try
 {
-    fwrite($stderr, "\033[0;31mFile '{$dslUri}' could not be read.\033[0m\n");
-    die(errorOnFileReadingProblems);
+    $generatorFactory = new CodeGeneratorFactory();
+    $cg = $generatorFactory->get($type);
+    $dslFile = @file_get_contents($dslUri);
+
+    if (false === $dslFile)
+    {
+        fwrite($stderr, "\033[0;31mFile '{$dslUri}' could not be read.\033[0m\n");
+        die(errorOnFileReadingProblems);
+    }
+
+    $dsl = Yaml::parse($dslFile);
+
+    fwrite($stdout, $cg->generate($dsl));
 }
-
-$dsl = Yaml::parse($dslFile);
-
-fwrite($stdout, $cg->generate($dsl));
+catch (Throwable $error)
+{
+    fwrite($stderr, "\033[0;31mUnexpected error '{$error->getMessage()}'.\033[0m\n");
+    die(errorOnUnexpectedResponse);
+}
