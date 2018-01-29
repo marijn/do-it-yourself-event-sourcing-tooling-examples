@@ -23,7 +23,7 @@ abstract class StepDescription {
 
         foreach ($data as $key => $value)
         {
-            $valueCode = $value;
+            $valueCode = is_array($value) ? self::dataToHtmlTable($value) : $value;
             $rows[] = <<<HTML
 <tr>
   <th>{$key}</th>
