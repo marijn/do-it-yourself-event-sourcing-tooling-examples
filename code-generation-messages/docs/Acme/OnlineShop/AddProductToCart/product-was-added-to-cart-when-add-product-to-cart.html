@@ -129,6 +129,10 @@
         display: block;
       }
 
+      table {
+        border-collapse: collapse;
+      }
+
       .event {
         background-color: orange;
       }
@@ -141,6 +145,11 @@
       .hotspot {
         background-color: fuchsia;
       }
+
+      .highlight > td, .highlight > th {
+        background-color: rgba(255, 255, 0, .25);
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body class="like-paper">
@@ -150,68 +159,93 @@
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>c32ab8cb-7bf0-37d8-abd1-c712add003b2</td>
+  <td>43548a1e-ed40-3d25-81a3-f4c4b63badfa</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>bb52b253-779f-3e69-9b5f-b0c540f0c1df</td>
+  <td>481e425a-de32-33a4-8c31-793f2e5e041f</td>
 </tr>
-<tr>
+<tr class="startedShoppingAt">
   <th>startedShoppingAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="command sticky like-paper">
   <h2>Acme.OnlineShop.AddProductToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>c32ab8cb-7bf0-37d8-abd1-c712add003b2</td>
+  <td>43548a1e-ed40-3d25-81a3-f4c4b63badfa</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>0065244155589</td>
+  <td>8187524349869</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>8770</td>
+  <td>868</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>KGS</td>
+  <td>MAD</td>
 </tr>
-<tr>
+<tr class="transactionTime">
   <th>transactionTime</th>
-  <td>2017-02-10T03:41:31.000000+0000</td>
+  <td>2017-02-26T20:52:59.000000+0000</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>c32ab8cb-7bf0-37d8-abd1-c712add003b2</td>
+  <td>43548a1e-ed40-3d25-81a3-f4c4b63badfa</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>bb52b253-779f-3e69-9b5f-b0c540f0c1df</td>
+  <td>481e425a-de32-33a4-8c31-793f2e5e041f</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>0065244155589</td>
+  <td>8187524349869</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>8770</td>
+  <td>868</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>KGS</td>
+  <td>MAD</td>
 </tr>
-<tr>
+<tr class="addedAt">
   <th>addedAt</th>
-  <td>2017-02-10T03:41:31.000000+0000</td>
+  <td>2017-02-26T20:52:59.000000+0000</td>
 </tr></table>
 </div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
+
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
+
+                  for (var j = 0, highlight; j < highlights.length; j++) {
+                      highlight = highlights.item(j);
+                      highlight.classList.remove('highlight');
+                  }
+
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
+
+                  for (var k = 0, match; k < matches.length; k++) {
+                      match = matches.item(k);
+                      match.classList.add('highlight');
+                  }
+              });
+          }
+      }, false);
+    </script>
   </body>
 </html>

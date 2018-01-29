@@ -129,6 +129,10 @@
         display: block;
       }
 
+      table {
+        border-collapse: collapse;
+      }
+
       .event {
         background-color: orange;
       }
@@ -140,6 +144,11 @@
 
       .hotspot {
         background-color: fuchsia;
+      }
+
+      .highlight > td, .highlight > th {
+        background-color: rgba(255, 255, 0, .25);
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -154,33 +163,58 @@
 </div>
 <div class="command sticky like-paper">
   <h2>Acme.OnlineShop.StartShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>10e5547d-f356-3fa7-bff2-a3c4156201df</td>
+  <td>871e79a5-469b-37d3-a48f-1a39471849c9</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>1018ace6-0df7-35f2-9a65-4a1045399b26</td>
+  <td>de6d73d7-59dc-342a-a156-787b0623f54e</td>
 </tr>
-<tr>
+<tr class="startTime">
   <th>startTime</th>
-  <td>2017-07-28T05:13:59.000000+0000</td>
+  <td>2017-08-31T13:50:02.000000+0000</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>10e5547d-f356-3fa7-bff2-a3c4156201df</td>
+  <td>871e79a5-469b-37d3-a48f-1a39471849c9</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>1018ace6-0df7-35f2-9a65-4a1045399b26</td>
+  <td>de6d73d7-59dc-342a-a156-787b0623f54e</td>
 </tr>
-<tr>
+<tr class="startedShoppingAt">
   <th>startedShoppingAt</th>
-  <td>2017-07-28T05:13:59.000000+0000</td>
+  <td>2017-08-31T13:50:02.000000+0000</td>
 </tr></table>
 </div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
+
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
+
+                  for (var j = 0, highlight; j < highlights.length; j++) {
+                      highlight = highlights.item(j);
+                      highlight.classList.remove('highlight');
+                  }
+
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
+
+                  for (var k = 0, match; k < matches.length; k++) {
+                      match = matches.item(k);
+                      match.classList.add('highlight');
+                  }
+              });
+          }
+      }, false);
+    </script>
   </body>
 </html>

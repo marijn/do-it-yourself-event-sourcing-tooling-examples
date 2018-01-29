@@ -129,6 +129,10 @@
         display: block;
       }
 
+      table {
+        border-collapse: collapse;
+      }
+
       .event {
         background-color: orange;
       }
@@ -141,6 +145,11 @@
       .hotspot {
         background-color: fuchsia;
       }
+
+      .highlight > td, .highlight > th {
+        background-color: rgba(255, 255, 0, .25);
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body class="like-paper">
@@ -150,37 +159,62 @@
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>1f6e0544-c89a-3d8e-b1cb-81124c360590</td>
+  <td>444ce4fe-e481-3b0f-b44d-26c7253d0fe4</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
   <td>...</td>
 </tr>
-<tr>
+<tr class="startedShoppingAt">
   <th>startedShoppingAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="command sticky like-paper">
   <h2>Acme.OnlineShop.StartShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>1f6e0544-c89a-3d8e-b1cb-81124c360590</td>
+  <td>444ce4fe-e481-3b0f-b44d-26c7253d0fe4</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>675a902e-a199-3eb9-8614-536f4c7fb908</td>
+  <td>f806c441-e0b8-3d3a-904c-84882edc358e</td>
 </tr>
-<tr>
+<tr class="startTime">
   <th>startTime</th>
-  <td>2017-08-16T23:03:44.000000+0000</td>
+  <td>2017-07-21T15:15:06.000000+0000</td>
 </tr></table>
 </div>
 <div class="hotspot sticky like-paper">
   <h2>Nothing</h2>
   <p>No changes should be recorded</p>
 </div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
+
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
+
+                  for (var j = 0, highlight; j < highlights.length; j++) {
+                      highlight = highlights.item(j);
+                      highlight.classList.remove('highlight');
+                  }
+
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
+
+                  for (var k = 0, match; k < matches.length; k++) {
+                      match = matches.item(k);
+                      match.classList.add('highlight');
+                  }
+              });
+          }
+      }, false);
+    </script>
   </body>
 </html>

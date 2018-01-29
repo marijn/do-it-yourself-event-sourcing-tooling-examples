@@ -129,6 +129,10 @@
         display: block;
       }
 
+      table {
+        border-collapse: collapse;
+      }
+
       .event {
         background-color: orange;
       }
@@ -141,6 +145,11 @@
       .hotspot {
         background-color: fuchsia;
       }
+
+      .highlight > td, .highlight > th {
+        background-color: rgba(255, 255, 0, .25);
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body class="like-paper">
@@ -150,72 +159,97 @@
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>5ad6d226-fb30-3430-ab10-f64c9c780157</td>
+  <td>9ad99c4d-8ed4-33b8-b91b-1af57afea423</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>4bd87853-efc6-3112-9dcc-f495e50b8770</td>
+  <td>f7499d02-3537-3888-a5c6-70da84afc092</td>
 </tr>
-<tr>
+<tr class="startedShoppingAt">
   <th>startedShoppingAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>5ad6d226-fb30-3430-ab10-f64c9c780157</td>
+  <td>9ad99c4d-8ed4-33b8-b91b-1af57afea423</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>4bd87853-efc6-3112-9dcc-f495e50b8770</td>
+  <td>f7499d02-3537-3888-a5c6-70da84afc092</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>2798518981383</td>
+  <td>3079921660959</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>12773</td>
+  <td>1390</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>CRC</td>
+  <td>BND</td>
 </tr>
-<tr>
+<tr class="addedAt">
   <th>addedAt</th>
-  <td>2017-08-20T21:28:36.000000+0000</td>
+  <td>2017-02-24T20:18:33.000000+0000</td>
 </tr></table>
 </div>
 <div class="command sticky like-paper">
   <h2>Acme.OnlineShop.AddProductToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>5ad6d226-fb30-3430-ab10-f64c9c780157</td>
+  <td>9ad99c4d-8ed4-33b8-b91b-1af57afea423</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>2798518981383</td>
+  <td>3079921660959</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>12773</td>
+  <td>1390</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>CRC</td>
+  <td>BND</td>
 </tr>
-<tr>
+<tr class="transactionTime">
   <th>transactionTime</th>
-  <td>2017-08-20T21:28:36.000000+0000</td>
+  <td>2017-02-24T20:18:33.000000+0000</td>
 </tr></table>
 </div>
 <div class="hotspot sticky like-paper">
   <h2>Nothing</h2>
   <p>No changes should be recorded</p>
 </div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
+
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
+
+                  for (var j = 0, highlight; j < highlights.length; j++) {
+                      highlight = highlights.item(j);
+                      highlight.classList.remove('highlight');
+                  }
+
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
+
+                  for (var k = 0, match; k < matches.length; k++) {
+                      match = matches.item(k);
+                      match.classList.add('highlight');
+                  }
+              });
+          }
+      }, false);
+    </script>
   </body>
 </html>

@@ -48,7 +48,7 @@ HTML;
         {
             $valueCode = is_array($value) ? self::dataToHtml($value) : $value;
             $rows[] = <<<HTML
-<tr>
+<tr class="{$key}">
   <th>{$key}</th>
   <td>{$valueCode}</td>
 </tr>

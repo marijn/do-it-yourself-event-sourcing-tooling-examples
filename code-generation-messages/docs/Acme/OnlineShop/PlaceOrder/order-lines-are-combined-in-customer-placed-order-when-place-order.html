@@ -129,6 +129,10 @@
         display: block;
       }
 
+      table {
+        border-collapse: collapse;
+      }
+
       .event {
         background-color: orange;
       }
@@ -141,6 +145,11 @@
       .hotspot {
         background-color: fuchsia;
       }
+
+      .highlight > td, .highlight > th {
+        background-color: rgba(255, 255, 0, .25);
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body class="like-paper">
@@ -150,164 +159,189 @@
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>ef9c9cdc-4dd1-3400-8f88-6ecca8a55843</td>
+  <td>81cbe1e6-8001-3d71-a9f3-fc38aba679eb</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>46bc2a4d-96b8-30d2-a95c-4d1db7497fc7</td>
+  <td>3590ed9f-9960-32fa-b066-ee75bd2d2d14</td>
 </tr>
-<tr>
+<tr class="startedShoppingAt">
   <th>startedShoppingAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>ef9c9cdc-4dd1-3400-8f88-6ecca8a55843</td>
+  <td>81cbe1e6-8001-3d71-a9f3-fc38aba679eb</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
   <td>...</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>0374407069428</td>
+  <td>0961314790301</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>12554</td>
+  <td>4048</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>XOF</td>
+  <td>RWF</td>
 </tr>
-<tr>
+<tr class="addedAt">
   <th>addedAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>ef9c9cdc-4dd1-3400-8f88-6ecca8a55843</td>
+  <td>81cbe1e6-8001-3d71-a9f3-fc38aba679eb</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
   <td>...</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>0374407069428</td>
+  <td>0961314790301</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>12554</td>
+  <td>4048</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>XOF</td>
+  <td>RWF</td>
 </tr>
-<tr>
+<tr class="addedAt">
   <th>addedAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>ef9c9cdc-4dd1-3400-8f88-6ecca8a55843</td>
+  <td>81cbe1e6-8001-3d71-a9f3-fc38aba679eb</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
   <td>...</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>7742821328279</td>
+  <td>6494607570129</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>5939</td>
+  <td>9015</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>XOF</td>
+  <td>RWF</td>
 </tr>
-<tr>
+<tr class="addedAt">
   <th>addedAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="command sticky like-paper">
   <h2>Acme.OnlineShop.PlaceOrder</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>ef9c9cdc-4dd1-3400-8f88-6ecca8a55843</td>
+  <td>81cbe1e6-8001-3d71-a9f3-fc38aba679eb</td>
 </tr>
-<tr>
+<tr class="orderTime">
   <th>orderTime</th>
-  <td>2017-09-09T13:22:15.000000+0000</td>
+  <td>2017-06-26T21:12:02.000000+0000</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerPlacedOrder</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>ef9c9cdc-4dd1-3400-8f88-6ecca8a55843</td>
+  <td>81cbe1e6-8001-3d71-a9f3-fc38aba679eb</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>46bc2a4d-96b8-30d2-a95c-4d1db7497fc7</td>
+  <td>3590ed9f-9960-32fa-b066-ee75bd2d2d14</td>
 </tr>
-<tr>
+<tr class="orderId">
   <th>orderId</th>
-  <td>528cc79b-c87b-3756-8f5d-f4df7d22e55d</td>
+  <td>ba29ccdd-7672-3a7b-a509-2dcf55cf9a83</td>
 </tr>
-<tr>
+<tr class="orderLines">
   <th>orderLines</th>
-  <td><ul><li><table><tr>
+  <td><ul><li><table><tr class="sku">
   <th>sku</th>
-  <td>0374407069428</td>
+  <td>0961314790301</td>
 </tr>
-<tr>
+<tr class="quantity">
   <th>quantity</th>
   <td>2</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>12554</td>
+  <td>4048</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>XOF</td>
+  <td>RWF</td>
 </tr></table></li>
-<li><table><tr>
+<li><table><tr class="sku">
   <th>sku</th>
-  <td>7742821328279</td>
+  <td>6494607570129</td>
 </tr>
-<tr>
+<tr class="quantity">
   <th>quantity</th>
   <td>1</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>5939</td>
+  <td>9015</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>XOF</td>
+  <td>RWF</td>
 </tr></table></li></ul></td>
 </tr>
-<tr>
+<tr class="orderPlacedAt">
   <th>orderPlacedAt</th>
-  <td>2017-09-09T13:22:15.000000+0000</td>
+  <td>2017-06-26T21:12:02.000000+0000</td>
 </tr></table>
 </div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
+
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
+
+                  for (var j = 0, highlight; j < highlights.length; j++) {
+                      highlight = highlights.item(j);
+                      highlight.classList.remove('highlight');
+                  }
+
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
+
+                  for (var k = 0, match; k < matches.length; k++) {
+                      match = matches.item(k);
+                      match.classList.add('highlight');
+                  }
+              });
+          }
+      }, false);
+    </script>
   </body>
 </html>

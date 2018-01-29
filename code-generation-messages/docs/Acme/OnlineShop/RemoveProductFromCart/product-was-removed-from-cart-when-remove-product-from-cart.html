@@ -129,6 +129,10 @@
         display: block;
       }
 
+      table {
+        border-collapse: collapse;
+      }
+
       .event {
         background-color: orange;
       }
@@ -141,6 +145,11 @@
       .hotspot {
         background-color: fuchsia;
       }
+
+      .highlight > td, .highlight > th {
+        background-color: rgba(255, 255, 0, .25);
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body class="like-paper">
@@ -150,95 +159,120 @@
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>b1e3b1a6-e967-3276-8378-353ab0e68de5</td>
+  <td>63a44f49-a08b-3e6f-a4dc-6a4263adcf4e</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>347e229a-7bc4-3b12-8a2c-51af040ac692</td>
+  <td>20a87131-7c46-3de5-afff-b7fc34a02184</td>
 </tr>
-<tr>
+<tr class="startedShoppingAt">
   <th>startedShoppingAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>b1e3b1a6-e967-3276-8378-353ab0e68de5</td>
+  <td>63a44f49-a08b-3e6f-a4dc-6a4263adcf4e</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>347e229a-7bc4-3b12-8a2c-51af040ac692</td>
+  <td>20a87131-7c46-3de5-afff-b7fc34a02184</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>4576969223560</td>
+  <td>8856020951813</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>4601</td>
+  <td>5936</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>MZN</td>
+  <td>INR</td>
 </tr>
-<tr>
+<tr class="addedAt">
   <th>addedAt</th>
   <td>...</td>
 </tr></table>
 </div>
 <div class="command sticky like-paper">
   <h2>Acme.OnlineShop.RemoveProductFromCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>b1e3b1a6-e967-3276-8378-353ab0e68de5</td>
+  <td>63a44f49-a08b-3e6f-a4dc-6a4263adcf4e</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>4576969223560</td>
+  <td>8856020951813</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>4601</td>
+  <td>5936</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>MZN</td>
+  <td>INR</td>
 </tr>
-<tr>
+<tr class="transactionTime">
   <th>transactionTime</th>
-  <td>2017-09-20T08:20:39.000000+0000</td>
+  <td>2017-02-07T09:46:26.000000+0000</td>
 </tr></table>
 </div>
 <div class="event sticky like-paper">
   <h2>Acme.OnlineShop.ProductWasRemovedFromCart</h2>
-  <table><tr>
+  <table><tr class="cartId">
   <th>cartId</th>
-  <td>b1e3b1a6-e967-3276-8378-353ab0e68de5</td>
+  <td>63a44f49-a08b-3e6f-a4dc-6a4263adcf4e</td>
 </tr>
-<tr>
+<tr class="customerId">
   <th>customerId</th>
-  <td>347e229a-7bc4-3b12-8a2c-51af040ac692</td>
+  <td>20a87131-7c46-3de5-afff-b7fc34a02184</td>
 </tr>
-<tr>
+<tr class="sku">
   <th>sku</th>
-  <td>4576969223560</td>
+  <td>8856020951813</td>
 </tr>
-<tr>
+<tr class="priceInCents">
   <th>priceInCents</th>
-  <td>4601</td>
+  <td>5936</td>
 </tr>
-<tr>
+<tr class="currency">
   <th>currency</th>
-  <td>MZN</td>
+  <td>INR</td>
 </tr>
-<tr>
+<tr class="removedAt">
   <th>removedAt</th>
-  <td>2017-09-20T08:20:39.000000+0000</td>
+  <td>2017-02-07T09:46:26.000000+0000</td>
 </tr></table>
 </div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
+
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
+
+                  for (var j = 0, highlight; j < highlights.length; j++) {
+                      highlight = highlights.item(j);
+                      highlight.classList.remove('highlight');
+                  }
+
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
+
+                  for (var k = 0, match; k < matches.length; k++) {
+                      match = matches.item(k);
+                      match.classList.add('highlight');
+                  }
+              });
+          }
+      }, false);
+    </script>
   </body>
 </html>
