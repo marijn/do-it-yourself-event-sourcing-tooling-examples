@@ -9,12 +9,21 @@ use InvalidArgumentException;
  */
 final class CodeGeneratorFactory {
 
-    function get(string $type): CodeGenerator {
-        switch ($type) {
-            case 'messages': return new MessagesCodeGenerator;
-            case 'handlers': return new CommandHandlersCodeGenerator;
+    private $generators;
 
-            default: throw new InvalidArgumentException('Unknown generator');
+    function __construct () {
+        $this->generators = [
+            'messages' => new MessagesCodeGenerator,
+            'handlers' => new CommandHandlersCodeGenerator,
+        ];
+    }
+
+    function get (string $type): CodeGenerator {
+        if ( ! array_key_exists($type, $this->generators))
+        {
+            throw new InvalidArgumentException('Unknown generator');
         }
+
+        return $this->generators[$type];
     }
 }
