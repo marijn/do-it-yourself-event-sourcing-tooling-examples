@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Acme\Infra\EventSourcing\CodeGeneration\CodeGenerator;
+use Acme\Infra\EventSourcing\CodeGeneration\CodeGeneratorFactory;
 use Symfony\Component\Yaml\Yaml;
 
 const errorOnInvalidUsage = 1;
@@ -27,7 +27,8 @@ if (count($argv) < 2 || count($argv) > 2)
     die(errorOnInvalidUsage);
 }
 
-$cg = new CodeGenerator;
+$generatorFactory = new CodeGeneratorFactory();
+$cg = $generatorFactory->get();
 $dslUri = $argv[1];
 $dslFile = @file_get_contents($dslUri);
 
