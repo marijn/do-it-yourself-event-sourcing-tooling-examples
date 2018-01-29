@@ -24,15 +24,15 @@ use Zend\Diactoros\Response\SapiEmitter;
  */
 final class Dependencies {
 
-    function templatingEngine (): TemplatingEngine {
+    private function templatingEngine (): TemplatingEngine {
         return new PhpEngine(new TemplateNameParser(), new FilesystemLoader([__DIR__.'/%name%']));
     }
 
-    function productRepository (): ProductRepository {
+    private function productRepository (): ProductRepository {
         return new HardCodedProductRepository;
     }
 
-    function router (): RouteDispatcher {
+    private function router (): RouteDispatcher {
         $productRepository = $this->productRepository();
         $templatingEngine = $this->templatingEngine();
 
