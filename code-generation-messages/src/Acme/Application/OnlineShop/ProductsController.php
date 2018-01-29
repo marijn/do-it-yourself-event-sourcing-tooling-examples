@@ -12,6 +12,8 @@ use Zend\Diactoros\Response\HtmlResponse;
 final class ProductsController {
 
     function handle (RequestInterface $request): ResponseInterface {
-        return new HtmlResponse(file_get_contents(__DIR__.'/templates/products.html'));
+        $view = __DIR__ . '/templates/products.html';
+
+        return new HtmlResponse(file_get_contents($view));
     }
 }
