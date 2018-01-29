@@ -1,0 +1,5 @@
+/* enough.css @link https://github.com/jeffkreeftmeijer/enough.css */
+
+th[scope='row'] {
+    text-align: right;
+}
