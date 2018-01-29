@@ -21,7 +21,9 @@ final class CodeGeneratorFactory {
     function get (string $type): CodeGenerator {
         if ( ! array_key_exists($type, $this->generators))
         {
-            throw new InvalidArgumentException('Unknown generator');
+            $supportedGenerators = implode(', ', array_keys($this->generators));
+
+            throw new InvalidArgumentException("Unknown generator. Supported generators: '{$supportedGenerators}'");
         }
 
         return $this->generators[$type];
