@@ -12,24 +12,26 @@ const errorOnFileReadingProblems = 2;
 $stdout = fopen('php://stdout', 'w');
 $stderr = fopen('php://stderr', 'w');
 
-if (count($argv) < 2 || count($argv) > 2)
+if (count($argv) < 3 || count($argv) > 3)
 {
     fwrite($stderr, "\033[0;31mInvalid usage of script.\033[0m\n");
     fwrite($stderr, "\n");
     fwrite($stderr, "You have to provide:\n");
     fwrite($stderr, "\n");
     fwrite($stderr, " - dsl (e.g. example-dsl.yaml)\n");
+    fwrite($stderr, " - type (e.g. messages)\n");
     fwrite($stderr, "\n");
     fwrite($stderr, "Example:\n");
     fwrite($stderr, "\n");
-    fwrite($stderr, " $\033[0;32m bin/generate-code.php src/Acme/OnlineShop/messages.yaml\033[0m\n");
+    fwrite($stderr, " $\033[0;32m bin/generate-code.php src/Acme/OnlineShop/messages.yaml messages\033[0m\n");
     fwrite($stderr, "\n");
     die(errorOnInvalidUsage);
 }
 
 $dslUri = $argv[1];
+$type = $argv[2];
 $generatorFactory = new CodeGeneratorFactory();
-$cg = $generatorFactory->get();
+$cg = $generatorFactory->get($type);
 $dslFile = @file_get_contents($dslUri);
 
 if (false === $dslFile)
