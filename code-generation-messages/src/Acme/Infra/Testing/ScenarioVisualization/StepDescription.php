@@ -23,10 +23,11 @@ abstract class StepDescription {
 
         foreach ($data as $key => $value)
         {
+            $valueCode = $value;
             $rows[] = <<<HTML
 <tr>
   <th>{$key}</th>
-  <td>{$value}</td>
+  <td>{$valueCode}</td>
 </tr>
 HTML;
         }
