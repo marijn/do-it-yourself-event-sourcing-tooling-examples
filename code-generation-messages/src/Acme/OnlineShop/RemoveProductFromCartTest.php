@@ -102,7 +102,7 @@ final class RemoveProductFromCartTest extends EventSourcedCommandHandlerTestCase
             'with consistent example data' => [
                 'cartId' => $faker->uuid,
                 'customerId' => $faker->uuid,
-                'sku' => $faker->ean13,
+                'sku' => sprintf('ACME-%03d', $faker->numberBetween(0, 999)),
                 'priceInCents' => $faker->numberBetween(499, 12999),
                 'currency' => $faker->currencyCode,
                 'transactionTime' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat),
