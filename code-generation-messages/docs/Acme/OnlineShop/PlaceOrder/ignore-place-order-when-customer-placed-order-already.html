@@ -158,135 +158,17 @@
   <h2>Acme.OnlineShop.PlaceOrder</h2>
   <p>Ignore PlaceOrder when CustomerPlacedOrder already</p>
 </div>
-<div class="event sticky like-paper">
-  <h2>Acme.OnlineShop.CustomerStartedShopping</h2>
-  <table><tr class="cartId">
-  <th>cartId</th>
-  <td>4e7fb6f0-1eba-3396-8a5c-61a4b1c43d97</td>
-</tr>
-<tr class="startedShoppingAt">
-  <th>startedShoppingAt</th>
-  <td>...</td>
-</tr></table>
-</div>
-<div class="event sticky like-paper">
-  <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr class="cartId">
-  <th>cartId</th>
-  <td>4e7fb6f0-1eba-3396-8a5c-61a4b1c43d97</td>
-</tr>
-<tr class="sku">
-  <th>sku</th>
-  <td>7052192843593</td>
-</tr>
-<tr class="priceInCents">
-  <th>priceInCents</th>
-  <td>6886</td>
-</tr>
-<tr class="currency">
-  <th>currency</th>
-  <td>XPF</td>
-</tr>
-<tr class="addedAt">
-  <th>addedAt</th>
-  <td>...</td>
-</tr></table>
-</div>
-<div class="event sticky like-paper">
-  <h2>Acme.OnlineShop.ProductWasAddedToCart</h2>
-  <table><tr class="cartId">
-  <th>cartId</th>
-  <td>4e7fb6f0-1eba-3396-8a5c-61a4b1c43d97</td>
-</tr>
-<tr class="sku">
-  <th>sku</th>
-  <td>5854078329700</td>
-</tr>
-<tr class="priceInCents">
-  <th>priceInCents</th>
-  <td>4697</td>
-</tr>
-<tr class="currency">
-  <th>currency</th>
-  <td>XPF</td>
-</tr>
-<tr class="addedAt">
-  <th>addedAt</th>
-  <td>...</td>
-</tr></table>
-</div>
-<div class="event sticky like-paper">
-  <h2>Acme.OnlineShop.CustomerPlacedOrder</h2>
-  <table><tr class="cartId">
-  <th>cartId</th>
-  <td>4e7fb6f0-1eba-3396-8a5c-61a4b1c43d97</td>
-</tr>
-<tr class="customerId">
-  <th>customerId</th>
-  <td>...</td>
-</tr>
-<tr class="orderId">
-  <th>orderId</th>
-  <td>296f7859-a68c-3249-a6a3-b1249f58ccdf</td>
-</tr>
-<tr class="orderLines">
-  <th>orderLines</th>
-  <td><ul><li><table><tr class="sku">
-  <th>sku</th>
-  <td>7052192843593</td>
-</tr>
-<tr class="quantity">
-  <th>quantity</th>
-  <td>1</td>
-</tr>
-<tr class="priceInCents">
-  <th>priceInCents</th>
-  <td>6886</td>
-</tr>
-<tr class="currency">
-  <th>currency</th>
-  <td>XPF</td>
-</tr></table></li>
-<li><table><tr class="sku">
-  <th>sku</th>
-  <td>5854078329700</td>
-</tr>
-<tr class="quantity">
-  <th>quantity</th>
-  <td>1</td>
-</tr>
-<tr class="priceInCents">
-  <th>priceInCents</th>
-  <td>4697</td>
-</tr>
-<tr class="currency">
-  <th>currency</th>
-  <td>XPF</td>
-</tr></table></li></ul></td>
-</tr>
-<tr class="orderPlacedAt">
-  <th>orderPlacedAt</th>
-  <td>2017-06-26T19:39:03.000000+0000</td>
-</tr></table>
-</div>
-<div class="command sticky like-paper">
-  <h2>Acme.OnlineShop.PlaceOrder</h2>
-  <table><tr class="cartId">
-  <th>cartId</th>
-  <td>4e7fb6f0-1eba-3396-8a5c-61a4b1c43d97</td>
-</tr>
-<tr class="customerId">
-  <th>customerId</th>
-  <td>45e984e6-5b68-36ed-833f-44babe7942ac</td>
-</tr>
-<tr class="orderTime">
-  <th>orderTime</th>
-  <td>2017-06-26T19:39:03.000000+0000</td>
-</tr></table>
+<div class="hotspot sticky like-paper">
+  <h2>No preconditions</h2>
+  <p>This scenario is completely autonomous</p>
 </div>
 <div class="hotspot sticky like-paper">
-  <h2>Nothing</h2>
-  <p>No changes should be recorded</p>
+  <h2>No command</h2>
+  <p>This scenario is likely incomplete</p>
+</div>
+<div class="hotspot sticky like-paper">
+  <h2>No outcome specified</h2>
+  <p>If this is desired change your test to use `thenNothing` to signal explicitly that nothing should happen.</p>
 </div></article>
     <script type="application/javascript">
       document.addEventListener('DOMContentLoaded', function () {

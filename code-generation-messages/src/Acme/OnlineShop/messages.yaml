@@ -6,7 +6,7 @@ Acme\OnlineShop:
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
-        startedShoppingAt:
+        startedAt:
           example: '2017-05-09 09:05:02.999999+0000'
 
     ProductWasAddedToCart:
@@ -63,7 +63,7 @@ Acme\OnlineShop:
               quantity: 1
               priceInCents: 1499
               currency: 'EUR'
-        orderPlacedAt:
+        orderedAt:
           example: '2017-05-09 09:07:12.999999+0000'
 
     CustomerAbandonedCart:
@@ -80,7 +80,8 @@ Acme\OnlineShop:
       doc: "Start the online shopping process by dispatching this command."
       attributes:
         cartId: ~
-        startTime: ~
+        startedAt:
+          doc: "The time to register when the `CustomerStartedShopping` if the command is acknowledged"
 
     AddProductToCart:
       attributes:
@@ -90,7 +91,8 @@ Acme\OnlineShop:
           constrainType: 'int'
         currency:
           doc: "Per cart only a single currency is supported"
-        transactionTime: ~
+        addedAt:
+          doc: "The time to register when the `ProductWasAddedToCart` if the command is acknowledged"
 
     RemoveProductFromCart:
       attributes:
@@ -100,10 +102,12 @@ Acme\OnlineShop:
           constrainType: 'int'
         currency:
           doc: "Per cart only a single currency is supported"
-        transactionTime: ~
+        removedAt:
+          doc: "The time to register when the `ProductWasRemovedFromCart` if the command is acknowledged"
 
     PlaceOrder:
       attributes:
         cartId: ~
         customerId: ~
-        orderTime: ~
+        orderedAt:
+          doc: "The time to register when the `CustomerPlacedOrder` if the command is acknowledged"

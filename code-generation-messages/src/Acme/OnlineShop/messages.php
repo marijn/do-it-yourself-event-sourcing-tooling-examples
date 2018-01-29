@@ -22,19 +22,19 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $startedShoppingAt
+         * @param string $startedAt
          */
         function __construct (
             string $cartId,
-            string $startedShoppingAt
+            string $startedAt
         ) {
             $this->cartId = $cartId;
-            $this->startedShoppingAt = $startedShoppingAt;
+            $this->startedAt = $startedAt;
         }
 
         private const exampleValues = [
             'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
-            'startedShoppingAt' => '2017-05-09 09:05:02.999999+0000',
+            'startedAt' => '2017-05-09 09:05:02.999999+0000',
         ];
 
         static function withCartId (string $cartId): CustomerStartedShopping {
@@ -47,13 +47,13 @@ namespace Acme\OnlineShop {
         static function fromPayload (array $payload): CustomerStartedShopping {
             return new CustomerStartedShopping(
                 $payload['cartId'],
-                $payload['startedShoppingAt']
+                $payload['startedAt']
             );
         }
 
-        function andWithStartedShoppingAt (string $startedShoppingAt): CustomerStartedShopping {
+        function andWithStartedAt (string $startedAt): CustomerStartedShopping {
             $modified = clone $this;
-            $modified->startedShoppingAt = $startedShoppingAt;
+            $modified->startedAt = $startedAt;
 
             return $modified;
         }
@@ -62,14 +62,14 @@ namespace Acme\OnlineShop {
 
         function cartId (): string { return $this->cartId; }
 
-        private $startedShoppingAt;
+        private $startedAt;
 
-        function startedShoppingAt (): string { return $this->startedShoppingAt; }
+        function startedAt (): string { return $this->startedAt; }
 
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'startedShoppingAt' => $this->startedShoppingAt,
+                'startedAt' => $this->startedAt,
             ];
         }
     }
@@ -313,20 +313,20 @@ namespace Acme\OnlineShop {
          * @param string $customerId
          * @param string $orderId
          * @param array $orderLines
-         * @param string $orderPlacedAt
+         * @param string $orderedAt
          */
         function __construct (
             string $cartId,
             string $customerId,
             string $orderId,
             array $orderLines,
-            string $orderPlacedAt
+            string $orderedAt
         ) {
             $this->cartId = $cartId;
             $this->customerId = $customerId;
             $this->orderId = $orderId;
             $this->orderLines = $orderLines;
-            $this->orderPlacedAt = $orderPlacedAt;
+            $this->orderedAt = $orderedAt;
         }
 
         private const exampleValues = [
@@ -350,7 +350,7 @@ namespace Acme\OnlineShop {
                             'currency' => 'EUR',
                         ],
                 ],
-            'orderPlacedAt' => '2017-05-09 09:07:12.999999+0000',
+            'orderedAt' => '2017-05-09 09:07:12.999999+0000',
         ];
 
         static function withCartId (string $cartId): CustomerPlacedOrder {
@@ -366,7 +366,7 @@ namespace Acme\OnlineShop {
                 $payload['customerId'],
                 $payload['orderId'],
                 $payload['orderLines'],
-                $payload['orderPlacedAt']
+                $payload['orderedAt']
             );
         }
 
@@ -391,9 +391,9 @@ namespace Acme\OnlineShop {
             return $modified;
         }
 
-        function andWithOrderPlacedAt (string $orderPlacedAt): CustomerPlacedOrder {
+        function andWithOrderedAt (string $orderedAt): CustomerPlacedOrder {
             $modified = clone $this;
-            $modified->orderPlacedAt = $orderPlacedAt;
+            $modified->orderedAt = $orderedAt;
 
             return $modified;
         }
@@ -414,9 +414,9 @@ namespace Acme\OnlineShop {
 
         function orderLines (): array { return $this->orderLines; }
 
-        private $orderPlacedAt;
+        private $orderedAt;
 
-        function orderPlacedAt (): string { return $this->orderPlacedAt; }
+        function orderedAt (): string { return $this->orderedAt; }
 
         function rawMessagePayload (): array {
             return [
@@ -424,7 +424,7 @@ namespace Acme\OnlineShop {
                 'customerId' => $this->customerId,
                 'orderId' => $this->orderId,
                 'orderLines' => $this->orderLines,
-                'orderPlacedAt' => $this->orderPlacedAt,
+                'orderedAt' => $this->orderedAt,
             ];
         }
     }
@@ -505,28 +505,28 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $startTime
+         * @param string $startedAt The time to register when the `CustomerStartedShopping` if the command is acknowledged
          */
         function __construct (
             string $cartId,
-            string $startTime
+            string $startedAt
         ) {
             $this->cartId = $cartId;
-            $this->startTime = $startTime;
+            $this->startedAt = $startedAt;
         }
 
         private $cartId;
 
         function cartId (): string { return $this->cartId; }
 
-        private $startTime;
+        private $startedAt;
 
-        function startTime (): string { return $this->startTime; }
+        function startedAt (): string { return $this->startedAt; }
 
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'startTime' => $this->startTime,
+                'startedAt' => $this->startedAt,
             ];
         }
     }
@@ -544,20 +544,20 @@ namespace Acme\OnlineShop {
          * @param string $sku
          * @param int $priceInCents
          * @param string $currency Per cart only a single currency is supported
-         * @param string $transactionTime
+         * @param string $addedAt The time to register when the `ProductWasAddedToCart` if the command is acknowledged
          */
         function __construct (
             string $cartId,
             string $sku,
             int $priceInCents,
             string $currency,
-            string $transactionTime
+            string $addedAt
         ) {
             $this->cartId = $cartId;
             $this->sku = $sku;
             $this->priceInCents = $priceInCents;
             $this->currency = $currency;
-            $this->transactionTime = $transactionTime;
+            $this->addedAt = $addedAt;
         }
 
         private $cartId;
@@ -576,9 +576,9 @@ namespace Acme\OnlineShop {
 
         function currency (): string { return $this->currency; }
 
-        private $transactionTime;
+        private $addedAt;
 
-        function transactionTime (): string { return $this->transactionTime; }
+        function addedAt (): string { return $this->addedAt; }
 
         function rawMessagePayload (): array {
             return [
@@ -586,7 +586,7 @@ namespace Acme\OnlineShop {
                 'sku' => $this->sku,
                 'priceInCents' => $this->priceInCents,
                 'currency' => $this->currency,
-                'transactionTime' => $this->transactionTime,
+                'addedAt' => $this->addedAt,
             ];
         }
     }
@@ -604,20 +604,20 @@ namespace Acme\OnlineShop {
          * @param string $sku
          * @param int $priceInCents
          * @param string $currency Per cart only a single currency is supported
-         * @param string $transactionTime
+         * @param string $removedAt The time to register when the `ProductWasRemovedFromCart` if the command is acknowledged
          */
         function __construct (
             string $cartId,
             string $sku,
             int $priceInCents,
             string $currency,
-            string $transactionTime
+            string $removedAt
         ) {
             $this->cartId = $cartId;
             $this->sku = $sku;
             $this->priceInCents = $priceInCents;
             $this->currency = $currency;
-            $this->transactionTime = $transactionTime;
+            $this->removedAt = $removedAt;
         }
 
         private $cartId;
@@ -636,9 +636,9 @@ namespace Acme\OnlineShop {
 
         function currency (): string { return $this->currency; }
 
-        private $transactionTime;
+        private $removedAt;
 
-        function transactionTime (): string { return $this->transactionTime; }
+        function removedAt (): string { return $this->removedAt; }
 
         function rawMessagePayload (): array {
             return [
@@ -646,7 +646,7 @@ namespace Acme\OnlineShop {
                 'sku' => $this->sku,
                 'priceInCents' => $this->priceInCents,
                 'currency' => $this->currency,
-                'transactionTime' => $this->transactionTime,
+                'removedAt' => $this->removedAt,
             ];
         }
     }
@@ -662,16 +662,16 @@ namespace Acme\OnlineShop {
          *
          * @param string $cartId
          * @param string $customerId
-         * @param string $orderTime
+         * @param string $orderedAt The time to register when the `CustomerPlacedOrder` if the command is acknowledged
          */
         function __construct (
             string $cartId,
             string $customerId,
-            string $orderTime
+            string $orderedAt
         ) {
             $this->cartId = $cartId;
             $this->customerId = $customerId;
-            $this->orderTime = $orderTime;
+            $this->orderedAt = $orderedAt;
         }
 
         private $cartId;
@@ -682,15 +682,15 @@ namespace Acme\OnlineShop {
 
         function customerId (): string { return $this->customerId; }
 
-        private $orderTime;
+        private $orderedAt;
 
-        function orderTime (): string { return $this->orderTime; }
+        function orderedAt (): string { return $this->orderedAt; }
 
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
                 'customerId' => $this->customerId,
-                'orderTime' => $this->orderTime,
+                'orderedAt' => $this->orderedAt,
             ];
         }
     }

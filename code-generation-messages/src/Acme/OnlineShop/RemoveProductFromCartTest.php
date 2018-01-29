@@ -13,14 +13,14 @@ final class RemoveProductFromCartTest extends EventSourcedCommandHandlerTestCase
 
     /**
      * @test
-     * @dataProvider provide cartId sku priceInCents currency and transactionTime
+     * @dataProvider provide cartId sku priceInCents currency and removedAt
      */
     function ProductWasRemovedFromCart when RemoveProductFromCart (
         string $cartId,
         string $sku,
         int $priceInCents,
         string $currency,
-        string $transactionTime
+        string $removedAt
     ): void {
         $this->scenario
             ->given(
@@ -31,21 +31,21 @@ final class RemoveProductFromCartTest extends EventSourcedCommandHandlerTestCase
                     ->andWithPriceInCents($priceInCents)
                     ->andWithCurrency($currency)
             )
-            ->when(new RemoveProductFromCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
-            ->then(new ProductWasRemovedFromCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
+            ->when(new RemoveProductFromCart($cartId, $sku, $priceInCents, $currency, $removedAt))
+            ->then(new ProductWasRemovedFromCart($cartId, $sku, $priceInCents, $currency, $removedAt))
             ->assert();
     }
 
     /**
      * @test
-     * @dataProvider provide cartId sku priceInCents currency and transactionTime
+     * @dataProvider provide cartId sku priceInCents currency and removedAt
      */
     function ignore RemoveProductFromCart when ProductWasRemovedFromCart already (
         string $cartId,
         string $sku,
         int $priceInCents,
         string $currency,
-        string $transactionTime
+        string $removedAt
     ): void {
         $this->scenario
             ->given(
@@ -61,32 +61,32 @@ final class RemoveProductFromCartTest extends EventSourcedCommandHandlerTestCase
                     ->andWithPriceInCents($priceInCents)
                     ->andWithCurrency($currency)
             )
-            ->when(new RemoveProductFromCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
+            ->when(new RemoveProductFromCart($cartId, $sku, $priceInCents, $currency, $removedAt))
             ->thenNothing()
             ->assert();
     }
 
     /**
      * @test
-     * @dataProvider provide cartId sku priceInCents currency and transactionTime
+     * @dataProvider provide cartId sku priceInCents currency and removedAt
      */
     function ignore RemoveProductFromCart when no corresponding ProductWasAddedToCart (
         string $cartId,
         string $sku,
         int $priceInCents,
         string $currency,
-        string $transactionTime
+        string $removedAt
     ): void {
         $this->scenario
             ->given(
                 CustomerStartedShopping::withCartId($cartId)
             )
-            ->when(new RemoveProductFromCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
+            ->when(new RemoveProductFromCart($cartId, $sku, $priceInCents, $currency, $removedAt))
             ->thenNothing()
             ->assert();
     }
 
-    static public function provide cartId sku priceInCents currency and transactionTime(): array {
+    static public function provide cartId sku priceInCents currency and removedAt(): array {
         $faker = Factory::create();
 
         return [
@@ -95,7 +95,7 @@ final class RemoveProductFromCartTest extends EventSourcedCommandHandlerTestCase
                 'sku' => sprintf('ACME-%03d', $faker->numberBetween(0, 999)),
                 'priceInCents' => $faker->numberBetween(499, 12999),
                 'currency' => $faker->currencyCode,
-                'transactionTime' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat),
+                'removedAt' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat),
             ]
         ];
     }

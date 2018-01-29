@@ -25,7 +25,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
         $priceInCents1stProduct = $faker->numberBetween(499, 12999);
         $sku2ndProduct = $faker->ean13;
         $priceInCents2ndProduct = $faker->numberBetween(499, 12999);
-        $orderTime = $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat);
+        $placedAt = $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat);
         $orderLines = [
             [
                 'sku' => $sku1stProduct,
@@ -54,8 +54,8 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
                     ->andWithPriceInCents($priceInCents2ndProduct)
                     ->andWithCurrency($currency)
             )
-            ->when(new PlaceOrder($cartId, $customerId, $orderTime))
-            ->then(new CustomerPlacedOrder($cartId, $customerId, $orderId, $orderLines, $orderTime))
+            ->when(new PlaceOrder($cartId, $customerId, $placedAt))
+            ->then(new CustomerPlacedOrder($cartId, $customerId, $orderId, $orderLines, $placedAt))
             ->assert();
     }
 
@@ -73,7 +73,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
         $priceInCents1stProduct = $faker->numberBetween(499, 12999);
         $sku2ndProduct = $faker->ean13;
         $priceInCents2ndProduct = $faker->numberBetween(499, 12999);
-        $orderTime = $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat);
+        $placedAt = $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat);
         $orderLines = [
             [
                 'sku' => $sku1stProduct,
@@ -107,8 +107,8 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
                     ->andWithPriceInCents($priceInCents2ndProduct)
                     ->andWithCurrency($currency)
             )
-            ->when(new PlaceOrder($cartId, $customerId, $orderTime))
-            ->then(new CustomerPlacedOrder($cartId, $customerId, $orderId, $orderLines, $orderTime))
+            ->when(new PlaceOrder($cartId, $customerId, $placedAt))
+            ->then(new CustomerPlacedOrder($cartId, $customerId, $orderId, $orderLines, $placedAt))
             ->assert();
     }
 
@@ -126,7 +126,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
         $priceInCents1stProduct = $faker->numberBetween(499, 12999);
         $sku2ndProduct = $faker->ean13;
         $priceInCents2ndProduct = $faker->numberBetween(499, 12999);
-        $orderTime = $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat);
+        $placedAt = $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat);
         $orderLines = [
             [
                 'sku' => $sku1stProduct,
@@ -158,9 +158,9 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
                 CustomerPlacedOrder::withCartId($cartId)
                     ->andWithOrderId($orderId)
                     ->andWithOrderLines($orderLines)
-                    ->andWithOrderPlacedAt($orderTime)
+                    ->andWithPlacedAt($placedAt)
             )
-            ->when(new PlaceOrder($cartId, $customerId, $orderTime))
+            ->when(new PlaceOrder($cartId, $customerId, $placedAt))
             ->thenNothing()
             ->assert();
     }

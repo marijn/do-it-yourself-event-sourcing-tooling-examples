@@ -13,34 +13,34 @@ final class StartShoppingTest extends EventSourcedCommandHandlerTestCase {
 
     /**
      * @test
-     * @dataProvider provide cartId and startTime
+     * @dataProvider provide cartId and startedAt
      */
-    function CustomerStartedShopping when StartShopping (string $cartId, string $startTime): void {
+    function CustomerStartedShopping when StartShopping (string $cartId, string $startedAt): void {
         $this->scenario
-            ->when(new StartShopping($cartId, $startTime))
-            ->then(new CustomerStartedShopping($cartId, $startTime))
+            ->when(new StartShopping($cartId, $startedAt))
+            ->then(new CustomerStartedShopping($cartId, $startedAt))
             ->assert();
     }
 
     /**
      * @test
-     * @dataProvider provide cartId and startTime
+     * @dataProvider provide cartId and startedAt
      */
-    function ignore StartShopping when CustomerStartedShopping already (string $cartId, string $startTime): void {
+    function ignore StartShopping when CustomerStartedShopping already (string $cartId, string $startedAt): void {
         $this->scenario
             ->given(CustomerStartedShopping::withCartId($cartId))
-            ->when(new StartShopping($cartId, $startTime))
+            ->when(new StartShopping($cartId, $startedAt))
             ->thenNothing()
             ->assert();
     }
 
-    static public function provide cartId and startTime(): array {
+    static public function provide cartId and startedAt(): array {
         $faker = Factory::create();
 
         return [
             'with consistent example data' => [
                 'cartId' => $faker->uuid,
-                'startTime' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat),
+                'startedAt' => $faker->dateTimeThisYear('3 months ago', 'UTC')->format(Standards::dateTimeFormat),
             ]
         ];
     }
