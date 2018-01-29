@@ -12,6 +12,7 @@ final class CodeGeneratorFactory {
     function get(string $type): CodeGenerator {
         switch ($type) {
             case 'messages': return new MessagesCodeGenerator;
+            case 'handlers': return new CommandHandlersCodeGenerator;
 
             default: throw new InvalidArgumentException('Unknown generator');
         }

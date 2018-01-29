@@ -78,12 +78,14 @@ Acme.OnlineShop:
   commands:
     StartShopping:
       doc: "Start the online shopping process by dispatching this command."
+      results in: Acme.OnlineShop.CustomerStartedShopping
       attributes:
         cartId: ~
         startedAt:
           doc: "The time to register when the `CustomerStartedShopping` if the command is acknowledged"
 
     AddProductToCart:
+      results in: Acme.OnlineShop.ProductWasAddedToCart
       attributes:
         cartId: ~
         sku: ~
@@ -95,6 +97,7 @@ Acme.OnlineShop:
           doc: "The time to register when the `ProductWasAddedToCart` if the command is acknowledged"
 
     RemoveProductFromCart:
+      results in: Acme.OnlineShop.ProductWasRemovedFromCart
       attributes:
         cartId: ~
         sku: ~
