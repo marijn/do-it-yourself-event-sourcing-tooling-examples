@@ -17,12 +17,12 @@ $request = ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, 
 $dependencies = new Dependencies();
 $templatingEngine = $dependencies->templatingEngine();
 $productRepository = $dependencies->productRepository();
-$router = function (RouteCollector $routing) use ($productRepository, $templatingEngine)
+$router = simpleDispatcher(function (RouteCollector $routing) use ($productRepository, $templatingEngine)
 {
     $routing->addRoute('GET', '/', new Delegate([new ProductsController($productRepository, $templatingEngine), 'handle']));
-};
+});
 $middlewares = [
-    new FastRoute(simpleDispatcher($router)),
+    new FastRoute($router),
     new RequestHandler(),
 ];
 $dispatcher = new HttpMiddlewareDispatcher($middlewares);
