@@ -16,6 +16,8 @@ use Symfony\Component\Templating\EngineInterface as TemplatingEngine;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\Templating\PhpEngine;
 use Symfony\Component\Templating\TemplateNameParser;
+use Zend\Diactoros\Response\EmitterInterface;
+use Zend\Diactoros\Response\SapiEmitter;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
@@ -48,5 +50,9 @@ final class Dependencies {
         ];
 
         return new HttpMiddlewareDispatcher($middlewares);
+    }
+
+    function responseEmitter (): EmitterInterface {
+        return new SapiEmitter();
     }
 }
