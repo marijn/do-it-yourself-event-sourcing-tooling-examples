@@ -12,6 +12,7 @@ return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     '65fec9ebcfbb3cbb4fd0d519687aea01' => $vendorDir . '/danielstjules/stringy/src/Create.php',
     'e050abfbc8f56b7048f9dd6785c2704d' => $baseDir . '/src/Acme/OnlineShop/messages.php',
+    'beae2941192c6ea988571aac70dbe0d4' => $baseDir . '/src/Acme/OnlineShop/handlers.php',
     'fab84e1d0e5343ba2e54c79e364c03f2' => $baseDir . '/src/Acme/Infra/EventSourcing/functions.php',
     '65e36eb9926234f31a0c62c39ff00e71' => $baseDir . '/src/Acme/Infra/UI/functions.php',
 );
