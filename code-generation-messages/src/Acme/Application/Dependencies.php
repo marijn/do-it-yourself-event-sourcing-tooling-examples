@@ -8,7 +8,10 @@ use Acme\OnlineShop\ProductRepository;
 use FastRoute\Dispatcher as RouteDispatcher;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
+use Middlewares\FastRoute;
+use Middlewares\RequestHandler;
 use mindplay\middleman\Delegate;
+use mindplay\middleman\Dispatcher as HttpMiddlewareDispatcher;
 use Symfony\Component\Templating\EngineInterface as TemplatingEngine;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\Templating\PhpEngine;
@@ -35,5 +38,15 @@ final class Dependencies {
         {
             $routing->addRoute('GET', '/', new Delegate([new ProductsController($productRepository, $templatingEngine), 'handle']));
         });
+    }
+
+    function httpRequestDispatcher (): HttpMiddlewareDispatcher {
+        $router = $this->router();
+        $middlewares = [
+            new FastRoute($router),
+            new RequestHandler(),
+        ];
+
+        return new HttpMiddlewareDispatcher($middlewares);
     }
 }
