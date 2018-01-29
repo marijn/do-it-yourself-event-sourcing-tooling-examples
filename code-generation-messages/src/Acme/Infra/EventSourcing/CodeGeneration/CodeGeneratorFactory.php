@@ -9,7 +9,7 @@ use InvalidArgumentException;
  */
 final class CodeGeneratorFactory {
 
-    function get(string $type): MessagesCodeGenerator {
+    function get(string $type): CodeGenerator {
         switch ($type) {
             case 'messages': return new MessagesCodeGenerator;
 

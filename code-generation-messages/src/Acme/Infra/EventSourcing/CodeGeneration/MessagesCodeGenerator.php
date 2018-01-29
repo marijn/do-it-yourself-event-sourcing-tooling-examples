@@ -8,7 +8,7 @@ use function Acme\Infra\EventSourcing\canonical_to_fully_qualified;
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-final class MessagesCodeGenerator {
+final class MessagesCodeGenerator implements CodeGenerator {
 
     function generate(array $dsl): string {
         $namespaces = [];
