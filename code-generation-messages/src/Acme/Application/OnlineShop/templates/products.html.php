@@ -1,3 +1,5 @@
+<?php /** @var \Acme\OnlineShop\Products|\Acme\OnlineShop\Product[] $products */ ?>
+<?php $formatter = new \Money\Formatter\DecimalMoneyFormatter(new \Money\Currencies\ISOCurrencies()); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,30 +19,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Orange Sticky Notes (90 squared notes 76mm X 76mm)</th>
-            <td>2,99 EUR</td>
-          </tr>
-          <tr>
-            <th scope="row">Fuchsia Sticky Notes (90 squared notes 76mm X 76mm)</th>
-            <td>2,99 EUR</td>
-          </tr>
-          <tr>
-            <th scope="row">Lilac Sticky Notes (90 squared notes 76mm X 76mm)</th>
-            <td>2,99 EUR</td>
-          </tr>
-          <tr>
-            <th scope="row">Blue Sticky Notes (90 squared notes 76mm X 76mm)</th>
-            <td>2,99 EUR</td>
-          </tr>
-          <tr>
-            <th scope="row">Pink Sticky Notes (90 rectangular notes 76mm X 127mm)</th>
-            <td>3,99 EUR</td>
-          </tr>
-          <tr>
-            <th scope="row">Green Sticky Notes (90 large rectangular notes 99mm X 147mm)</th>
-            <td>4,99 EUR</td>
-          </tr>
+          <?php foreach ($products as $product): ?>
+            <tr>
+              <th scope="row"><?= $product->name(); ?> (<?= $product->description(); ?>)</th>
+              <td><?= $formatter->format($product->price()); ?> <?= $product->price()->getCurrency()->getCode(); ?></td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </article>

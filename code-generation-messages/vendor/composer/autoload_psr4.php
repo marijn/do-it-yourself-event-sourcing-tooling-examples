@@ -16,6 +16,7 @@ return array(
     'Psr\\Http\\Server\\' => array($vendorDir . '/psr/http-server-handler/src', $vendorDir . '/psr/http-server-middleware/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Money\\' => array($vendorDir . '/moneyphp/money/src'),
     'Middlewares\\Utils\\' => array($vendorDir . '/middlewares/utils/src'),
     'Middlewares\\' => array($vendorDir . '/middlewares/fast-route/src', $vendorDir . '/middlewares/request-handler/src'),
     'Interop\\Http\\Server\\' => array($vendorDir . '/http-interop/http-server-handler/src', $vendorDir . '/http-interop/http-server-middleware/src'),

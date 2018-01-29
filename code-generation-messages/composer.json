@@ -15,6 +15,8 @@
     "symfony/yaml": "^3.2",
     "nikic/fast-route": "Controller routing (loose version because reliable vendor)",
     "nikic/fast-route": "^1.2",
+    "moneyphp/money": "Value object for money (exact version because maintainer is no longer Mathias)",
+    "moneyphp/money": "3.0.9",
     "mindplay/middleman": "PSR-7/PSR-15 HTTP middleware dispatcher (exact version because unreleased software)",
     "mindplay/middleman": "3.0.2.x",
     "middlewares/fast-route": "PSR-7/PSR-15 HTTP middleware for Nikic Fastroute (exact version because its 0.x version)",

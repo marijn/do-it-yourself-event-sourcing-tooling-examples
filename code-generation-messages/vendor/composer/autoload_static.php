@@ -44,6 +44,7 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
         ),
         'M' => 
         array (
+            'Money\\' => 6,
             'Middlewares\\Utils\\' => 18,
             'Middlewares\\' => 12,
         ),
@@ -100,6 +101,10 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Money\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/moneyphp/money/src',
         ),
         'Middlewares\\Utils\\' => 
         array (
