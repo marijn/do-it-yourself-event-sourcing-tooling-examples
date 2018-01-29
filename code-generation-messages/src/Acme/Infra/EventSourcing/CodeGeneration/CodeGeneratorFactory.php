@@ -7,7 +7,7 @@ namespace Acme\Infra\EventSourcing\CodeGeneration;
  */
 final class CodeGeneratorFactory {
 
-    function get(): CodeGenerator {
-        return new CodeGenerator;
+    function get(): MessagesCodeGenerator {
+        return new MessagesCodeGenerator;
     }
 }

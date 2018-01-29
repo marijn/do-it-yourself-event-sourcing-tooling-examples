@@ -8,7 +8,7 @@ use function Acme\Infra\EventSourcing\canonical_to_fully_qualified;
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-final class CodeGenerator {
+final class MessagesCodeGenerator {
 
     function generate(array $dsl): string {
         $namespaces = [];
@@ -35,7 +35,7 @@ PHP;
  * Modify by changing the underlying DSL. Convention stipulates that the file has an identical filename with a .yaml extension.
  * Are you a first-timer? Ask someone to help you. Have a nice day :-)
  *
- * @see \Acme\Infra\EventSourcing\CodeGeneration\CodeGenerator
+ * @see \Acme\Infra\EventSourcing\CodeGeneration\MessagesCodeGenerator
  */
 
 {$code}

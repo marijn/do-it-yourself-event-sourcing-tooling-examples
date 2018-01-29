@@ -5,7 +5,7 @@
  * Modify by changing the underlying DSL. Convention stipulates that the file has an identical filename with a .yaml extension.
  * Are you a first-timer? Ask someone to help you. Have a nice day :-)
  *
- * @see \Acme\Infra\EventSourcing\CodeGeneration\CodeGenerator
+ * @see \Acme\Infra\EventSourcing\CodeGeneration\MessagesCodeGenerator
  */
 
 namespace Acme\OnlineShop {
