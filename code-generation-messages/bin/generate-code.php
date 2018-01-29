@@ -27,9 +27,9 @@ if (count($argv) < 2 || count($argv) > 2)
     die(errorOnInvalidUsage);
 }
 
+$dslUri = $argv[1];
 $generatorFactory = new CodeGeneratorFactory();
 $cg = $generatorFactory->get();
-$dslUri = $argv[1];
 $dslFile = @file_get_contents($dslUri);
 
 if (false === $dslFile)
