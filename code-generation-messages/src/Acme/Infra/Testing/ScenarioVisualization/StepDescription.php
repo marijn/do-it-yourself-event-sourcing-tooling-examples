@@ -16,8 +16,27 @@ abstract class StepDescription {
     static function forHotspot (string $hotspot, string $detail): StepDescription { return new HotspotDescription($hotspot, $detail); }
     static function forScenario (string $scenario, string $detail): StepDescription { return new ScenarioDescription($scenario, $detail); }
 
-    protected static function dataToHtml (array $value): string {
-        return self::dataToHtmlTable($value);
+    protected static function dataToHtml (array $data): string {
+        return self::hasNumericKeys($data) ? self::dataToHtmlList($data) : self::dataToHtmlTable($data);
+    }
+
+    private static function dataToHtmlList (array $data): string {
+        $elements = [];
+
+        foreach ($data as $key => $value)
+        {
+            $valueCode = is_array($value) ? self::dataToHtml($value) : $value;
+            $elements[] = <<<HTML
+<li>{$valueCode}</li>
+HTML;
+        }
+
+        $elementsCode = implode(PHP_EOL, $elements);
+
+        return <<<HTML
+<ul>{$elementsCode}</ul>
+HTML;
+
     }
 
     abstract function toHtml (): string;
@@ -41,5 +60,17 @@ HTML;
         return <<<HTML
 <table>{$rowCode}</table>
 HTML;
+    }
+
+    private static function hasNumericKeys (array $candidate): bool {
+        foreach (array_keys($candidate) as $key)
+        {
+            if ( ! is_int($key))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
