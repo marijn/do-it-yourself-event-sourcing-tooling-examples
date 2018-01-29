@@ -14,6 +14,6 @@ final class ControllerFactory {
     function __construct (Dependencies $dependencies) { $this->dependencies = $dependencies; }
 
     function productsController (): ProductsController {
-        new ProductsController($this->dependencies->productRepository(), $this->dependencies->templatingEngine());
+        return new ProductsController($this->dependencies->productRepository(), $this->dependencies->templatingEngine());
     }
 }
