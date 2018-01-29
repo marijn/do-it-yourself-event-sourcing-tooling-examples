@@ -16,6 +16,10 @@ abstract class StepDescription {
     static function forHotspot (string $hotspot, string $detail): StepDescription { return new HotspotDescription($hotspot, $detail); }
     static function forScenario (string $scenario, string $detail): StepDescription { return new ScenarioDescription($scenario, $detail); }
 
+    protected static function dataToHtml (array $value): string {
+        return self::dataToHtmlTable($value);
+    }
+
     abstract function toHtml (): string;
 
     static protected function dataToHtmlTable (array $data): string {
@@ -23,7 +27,7 @@ abstract class StepDescription {
 
         foreach ($data as $key => $value)
         {
-            $valueCode = is_array($value) ? self::dataToHtmlTable($value) : $value;
+            $valueCode = is_array($value) ? self::dataToHtml($value) : $value;
             $rows[] = <<<HTML
 <tr>
   <th>{$key}</th>
