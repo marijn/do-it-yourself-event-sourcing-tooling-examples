@@ -14,6 +14,7 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
         '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         'e050abfbc8f56b7048f9dd6785c2704d' => __DIR__ . '/../..' . '/src/Acme/OnlineShop/messages.php',
         'fab84e1d0e5343ba2e54c79e364c03f2' => __DIR__ . '/../..' . '/src/Acme/Infra/EventSourcing/functions.php',
+        '65e36eb9926234f31a0c62c39ff00e71' => __DIR__ . '/../..' . '/src/Acme/Infra/UI/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (

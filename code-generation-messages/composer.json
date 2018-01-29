@@ -33,7 +33,8 @@
     "files": [
       "src/Acme/OnlineShop/messages.php",
 
-      "src/Acme/Infra/EventSourcing/functions.php"
+      "src/Acme/Infra/EventSourcing/functions.php",
+      "src/Acme/Infra/UI/functions.php"
     ]
   }
 }

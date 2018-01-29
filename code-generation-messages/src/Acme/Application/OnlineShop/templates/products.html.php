@@ -21,8 +21,8 @@
         <tbody>
           <?php foreach ($products as $product): ?>
             <tr>
-              <th scope="row"><?= $product->name(); ?> (<?= $product->description(); ?>)</th>
-              <td><?= $formatter->format($product->price()); ?> <?= $product->price()->getCurrency()->getCode(); ?></td>
+              <th scope="row"><?= esc($product->name()); ?> (<?= esc($product->description()); ?>)</th>
+              <td><?= esc($formatter->format($product->price())); ?> <?= esc($product->price()->getCurrency()->getCode()); ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
