@@ -1,4 +1,4 @@
-Acme\OnlineShop:
+Acme.OnlineShop:
   events:
     CustomerStartedShopping:
       doc: 'When the customer enters the online shop the `CustomerStartedShopping` event is recorded.'
