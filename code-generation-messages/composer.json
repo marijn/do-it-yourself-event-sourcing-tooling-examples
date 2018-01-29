@@ -10,7 +10,17 @@
     "ramsey/uuid": "UUID generation library (patch releases allowed because the vendor is reliable)",
     "ramsey/uuid": "^3.7.3",
     "symfony/yaml": "YAML Parser (loose version because reliable vendor)",
-    "symfony/yaml": "^3.2"
+    "symfony/yaml": "^3.2",
+    "nikic/fast-route": "Controller routing (loose version because reliable vendor)",
+    "nikic/fast-route": "^1.2",
+    "mindplay/middleman": "PSR-7/PSR-15 HTTP middleware dispatcher (exact version because unreleased software)",
+    "mindplay/middleman": "3.0.2.x",
+    "middlewares/fast-route": "PSR-7/PSR-15 HTTP middleware for Nikic Fastroute (exact version because its 0.x version)",
+    "middlewares/fast-route": "0.9.0",
+    "middlewares/request-handler": "PSR-7/PSR-15 HTTP middleware required to make the Nikic Fastroute middleware work (exact version because its 0.x version)",
+    "middlewares/request-handler": "0.5.0",
+    "zendframework/zend-diactoros": "HTTP message library for processing HTTP requests on the server (patch releases allowed because the vendor is reliable)",
+    "zendframework/zend-diactoros": "^1.4.0"
   },
   "autoload": {
     "psr-0": {

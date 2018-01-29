@@ -1,10 +1,12 @@
-Code generation of message classes
-==================================
+Acme, Inc Online Shop
+=====================
 
-Speed up your start by generating message classes. 
+An Online Shop for buying products from Acme, Inc. 
 
 How to run it?
 --------------
+
+You can boot the [web application](http://localhost:8888) by running `bin/boot.sh`.
 
 You can compile the message classes by running `bin/compile.sh`. 
 

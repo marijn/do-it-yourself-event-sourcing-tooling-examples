@@ -1,0 +1,31 @@
+{
+    "name": "mindplay/middleman",
+    "type": "library",
+    "description": "PSR-7 middleware dispatcher. Let's stop trying to make this complicated.",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Rasmus Schultz",
+            "email": "rasmus@mindplay.dk"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "psr/http-message": "^1.0",
+        "http-interop/http-server-handler": "^1.0",
+        "http-interop/http-server-middleware": "^1.0",
+        "psr/container": "^1.0",
+        "mindplay/readable": "^1"
+    },
+    "require-dev": {
+        "mindplay/testies": "^0.2.0",
+        "phpunit/php-code-coverage": "^2.2",
+        "container-interop/container-interop": "^1.2",
+        "mockery/mockery": "^0.9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "mindplay\\middleman\\": "src/"
+        }
+    }
+}

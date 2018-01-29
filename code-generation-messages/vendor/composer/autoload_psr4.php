@@ -6,9 +6,19 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'mindplay\\middleman\\' => array($vendorDir . '/mindplay/middleman/src'),
+    'Zend\\Diactoros\\' => array($vendorDir . '/zendframework/zend-diactoros/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Psr\\Http\\Server\\' => array($vendorDir . '/psr/http-server-handler/src', $vendorDir . '/psr/http-server-middleware/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Middlewares\\Utils\\' => array($vendorDir . '/middlewares/utils/src'),
+    'Middlewares\\' => array($vendorDir . '/middlewares/fast-route/src', $vendorDir . '/middlewares/request-handler/src'),
+    'Interop\\Http\\Server\\' => array($vendorDir . '/http-interop/http-server-handler/src', $vendorDir . '/http-interop/http-server-middleware/src'),
+    'Interop\\Http\\Factory\\' => array($vendorDir . '/http-interop/http-factory/src'),
+    'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );
