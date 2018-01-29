@@ -9,6 +9,8 @@
     "fzaninotto/faker": "^1.7.1",
     "ramsey/uuid": "UUID generation library (patch releases allowed because the vendor is reliable)",
     "ramsey/uuid": "^3.7.3",
+    "symfony/templating": "Templating library (loose version because reliable vendor)",
+    "symfony/templating": "^3.3",
     "symfony/yaml": "YAML Parser (loose version because reliable vendor)",
     "symfony/yaml": "^3.2",
     "nikic/fast-route": "Controller routing (loose version because reliable vendor)",

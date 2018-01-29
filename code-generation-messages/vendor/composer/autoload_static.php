@@ -29,6 +29,7 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
+            'Symfony\\Component\\Templating\\' => 29,
             'Stringy\\' => 8,
         ),
         'R' => 
@@ -74,6 +75,10 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
+        'Symfony\\Component\\Templating\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/templating',
         ),
         'Stringy\\' => 
         array (

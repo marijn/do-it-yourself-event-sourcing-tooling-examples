@@ -4,6 +4,7 @@ namespace Acme\Application\OnlineShop;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Templating\EngineInterface as TemplatingEngine;
 use Zend\Diactoros\Response\HtmlResponse;
 
 /**
@@ -11,9 +12,13 @@ use Zend\Diactoros\Response\HtmlResponse;
  */
 final class ProductsController {
 
-    function handle (RequestInterface $request): ResponseInterface {
-        $view = __DIR__ . '/templates/products.html';
+    private $templating;
 
-        return new HtmlResponse(file_get_contents($view));
+    function __construct (TemplatingEngine $templating) { $this->templating = $templating; }
+
+    function handle (RequestInterface $request): ResponseInterface {
+        $view = 'OnlineShop/templates/products.html.php';
+
+        return new HtmlResponse($this->templating->render($view));
     }
 }
