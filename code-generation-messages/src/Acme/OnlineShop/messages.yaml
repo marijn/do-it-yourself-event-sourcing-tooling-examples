@@ -6,8 +6,6 @@ Acme\OnlineShop:
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
-        customerId:
-          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
         startedShoppingAt:
           example: '2017-05-09 09:05:02.999999+0000'
 
@@ -16,8 +14,6 @@ Acme\OnlineShop:
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
-        customerId:
-          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
         sku:
           doc: 'The "Stock Keeping Unit" from the Product Catalog 2.0'
           example: 'ACME-001'
@@ -34,8 +30,6 @@ Acme\OnlineShop:
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
-        customerId:
-          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
         sku:
           doc: 'The "Stock Keeping Unit" from the Product Catalog 2.0'
           example: 'ACME-001'
@@ -78,8 +72,6 @@ Acme\OnlineShop:
       attributes:
         cartId:
           example: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
-        customerId:
-          example: 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB'
         abandonedAt:
           example: '2017-05-09 10:09:59.999999+0000'
 
@@ -88,7 +80,6 @@ Acme\OnlineShop:
       doc: "Start the online shopping process by dispatching this command."
       attributes:
         cartId: ~
-        customerId: ~
         startTime: ~
 
     AddProductToCart:
@@ -114,4 +105,5 @@ Acme\OnlineShop:
     PlaceOrder:
       attributes:
         cartId: ~
+        customerId: ~
         orderTime: ~

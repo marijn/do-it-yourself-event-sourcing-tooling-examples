@@ -13,11 +13,10 @@ final class AddProductToCartTest extends EventSourcedCommandHandlerTestCase {
 
     /**
      * @test
-     * @dataProvider provide cartId customerId sku priceInCents currency and transactionTime
+     * @dataProvider provide cartId sku priceInCents currency and transactionTime
      */
     function ProductWasAddedToCart when AddProductToCart (
         string $cartId,
-        string $customerId,
         string $sku,
         int $priceInCents,
         string $currency,
@@ -26,20 +25,18 @@ final class AddProductToCartTest extends EventSourcedCommandHandlerTestCase {
         $this->scenario
             ->given(
                 CustomerStartedShopping::withCartId($cartId)
-                    ->andWithCustomerId($customerId)
             )
             ->when(new AddProductToCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
-            ->then(new ProductWasAddedToCart($cartId, $customerId, $sku, $priceInCents, $currency, $transactionTime))
+            ->then(new ProductWasAddedToCart($cartId, $sku, $priceInCents, $currency, $transactionTime))
             ->assert();
     }
 
     /**
      * @test
-     * @dataProvider provide cartId customerId sku priceInCents currency and transactionTime
+     * @dataProvider provide cartId sku priceInCents currency and transactionTime
      */
     function ignore AddProductToCart when ProductWasAddedToCart already (
         string $cartId,
-        string $customerId,
         string $sku,
         int $priceInCents,
         string $currency,
@@ -47,11 +44,9 @@ final class AddProductToCartTest extends EventSourcedCommandHandlerTestCase {
     ): void {
         $this->scenario
             ->given(
-                CustomerStartedShopping::withCartId($cartId)
-                    ->andWithCustomerId($customerId),
+                CustomerStartedShopping::withCartId($cartId),
 
                 ProductWasAddedToCart::withCartId($cartId)
-                    ->andWithCustomerId($customerId)
                     ->andWithSku($sku)
                     ->andWithPriceInCents($priceInCents)
                     ->andWithCurrency($currency)
@@ -62,13 +57,12 @@ final class AddProductToCartTest extends EventSourcedCommandHandlerTestCase {
             ->assert();
     }
 
-    static public function provide cartId customerId sku priceInCents currency and transactionTime(): array {
+    static public function provide cartId sku priceInCents currency and transactionTime(): array {
         $faker = Factory::create();
 
         return [
             'with consistent example data' => [
                 'cartId' => $faker->uuid,
-                'customerId' => $faker->uuid,
                 'sku' => sprintf('ACME-%03d', $faker->numberBetween(0, 999)),
                 'priceInCents' => $faker->numberBetween(499, 12999),
                 'currency' => $faker->currencyCode,

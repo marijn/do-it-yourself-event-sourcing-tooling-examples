@@ -42,8 +42,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
 
         $this->scenario
             ->given(
-                CustomerStartedShopping::withCartId($cartId)
-                    ->andWithCustomerId($customerId),
+                CustomerStartedShopping::withCartId($cartId),
 
                 ProductWasAddedToCart::withCartId($cartId)
                     ->andWithSku($sku1stProduct)
@@ -55,7 +54,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
                     ->andWithPriceInCents($priceInCents2ndProduct)
                     ->andWithCurrency($currency)
             )
-            ->when(new PlaceOrder($cartId, $orderTime))
+            ->when(new PlaceOrder($cartId, $customerId, $orderTime))
             ->then(new CustomerPlacedOrder($cartId, $customerId, $orderId, $orderLines, $orderTime))
             ->assert();
     }
@@ -91,8 +90,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
 
         $this->scenario
             ->given(
-                CustomerStartedShopping::withCartId($cartId)
-                    ->andWithCustomerId($customerId),
+                CustomerStartedShopping::withCartId($cartId),
 
                 ProductWasAddedToCart::withCartId($cartId)
                     ->andWithSku($sku1stProduct)
@@ -109,7 +107,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
                     ->andWithPriceInCents($priceInCents2ndProduct)
                     ->andWithCurrency($currency)
             )
-            ->when(new PlaceOrder($cartId, $orderTime))
+            ->when(new PlaceOrder($cartId, $customerId, $orderTime))
             ->then(new CustomerPlacedOrder($cartId, $customerId, $orderId, $orderLines, $orderTime))
             ->assert();
     }
@@ -145,8 +143,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
 
         $this->scenario
             ->given(
-                CustomerStartedShopping::withCartId($cartId)
-                    ->andWithCustomerId($customerId),
+                CustomerStartedShopping::withCartId($cartId),
 
                 ProductWasAddedToCart::withCartId($cartId)
                     ->andWithSku($sku1stProduct)
@@ -163,7 +160,7 @@ final class PlaceOrderTest extends EventSourcedCommandHandlerTestCase {
                     ->andWithOrderLines($orderLines)
                     ->andWithOrderPlacedAt($orderTime)
             )
-            ->when(new PlaceOrder($cartId, $orderTime))
+            ->when(new PlaceOrder($cartId, $customerId, $orderTime))
             ->thenNothing()
             ->assert();
     }

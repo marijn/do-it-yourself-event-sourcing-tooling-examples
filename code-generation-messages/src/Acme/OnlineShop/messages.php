@@ -22,22 +22,18 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $customerId
          * @param string $startedShoppingAt
          */
         function __construct (
             string $cartId,
-            string $customerId,
             string $startedShoppingAt
         ) {
             $this->cartId = $cartId;
-            $this->customerId = $customerId;
             $this->startedShoppingAt = $startedShoppingAt;
         }
 
         private const exampleValues = [
             'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
-            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
             'startedShoppingAt' => '2017-05-09 09:05:02.999999+0000',
         ];
 
@@ -51,16 +47,8 @@ namespace Acme\OnlineShop {
         static function fromPayload (array $payload): CustomerStartedShopping {
             return new CustomerStartedShopping(
                 $payload['cartId'],
-                $payload['customerId'],
                 $payload['startedShoppingAt']
             );
-        }
-
-        function andWithCustomerId (string $customerId): CustomerStartedShopping {
-            $modified = clone $this;
-            $modified->customerId = $customerId;
-
-            return $modified;
         }
 
         function andWithStartedShoppingAt (string $startedShoppingAt): CustomerStartedShopping {
@@ -74,10 +62,6 @@ namespace Acme\OnlineShop {
 
         function cartId (): string { return $this->cartId; }
 
-        private $customerId;
-
-        function customerId (): string { return $this->customerId; }
-
         private $startedShoppingAt;
 
         function startedShoppingAt (): string { return $this->startedShoppingAt; }
@@ -85,7 +69,6 @@ namespace Acme\OnlineShop {
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'customerId' => $this->customerId,
                 'startedShoppingAt' => $this->startedShoppingAt,
             ];
         }
@@ -101,7 +84,6 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $customerId
          * @param string $sku The "Stock Keeping Unit" from the Product Catalog 2.0
          * @param int $priceInCents
          * @param string $currency
@@ -109,14 +91,12 @@ namespace Acme\OnlineShop {
          */
         function __construct (
             string $cartId,
-            string $customerId,
             string $sku,
             int $priceInCents,
             string $currency,
             string $addedAt
         ) {
             $this->cartId = $cartId;
-            $this->customerId = $customerId;
             $this->sku = $sku;
             $this->priceInCents = $priceInCents;
             $this->currency = $currency;
@@ -125,7 +105,6 @@ namespace Acme\OnlineShop {
 
         private const exampleValues = [
             'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
-            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
             'sku' => 'ACME-001',
             'priceInCents' => 1299,
             'currency' => 'EUR',
@@ -142,19 +121,11 @@ namespace Acme\OnlineShop {
         static function fromPayload (array $payload): ProductWasAddedToCart {
             return new ProductWasAddedToCart(
                 $payload['cartId'],
-                $payload['customerId'],
                 $payload['sku'],
                 $payload['priceInCents'],
                 $payload['currency'],
                 $payload['addedAt']
             );
-        }
-
-        function andWithCustomerId (string $customerId): ProductWasAddedToCart {
-            $modified = clone $this;
-            $modified->customerId = $customerId;
-
-            return $modified;
         }
 
         function andWithSku (string $sku): ProductWasAddedToCart {
@@ -189,10 +160,6 @@ namespace Acme\OnlineShop {
 
         function cartId (): string { return $this->cartId; }
 
-        private $customerId;
-
-        function customerId (): string { return $this->customerId; }
-
         private $sku;
 
         function sku (): string { return $this->sku; }
@@ -212,7 +179,6 @@ namespace Acme\OnlineShop {
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'customerId' => $this->customerId,
                 'sku' => $this->sku,
                 'priceInCents' => $this->priceInCents,
                 'currency' => $this->currency,
@@ -231,7 +197,6 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $customerId
          * @param string $sku The "Stock Keeping Unit" from the Product Catalog 2.0
          * @param int $priceInCents
          * @param string $currency
@@ -239,14 +204,12 @@ namespace Acme\OnlineShop {
          */
         function __construct (
             string $cartId,
-            string $customerId,
             string $sku,
             int $priceInCents,
             string $currency,
             string $removedAt
         ) {
             $this->cartId = $cartId;
-            $this->customerId = $customerId;
             $this->sku = $sku;
             $this->priceInCents = $priceInCents;
             $this->currency = $currency;
@@ -255,7 +218,6 @@ namespace Acme\OnlineShop {
 
         private const exampleValues = [
             'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
-            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
             'sku' => 'ACME-001',
             'priceInCents' => 1299,
             'currency' => 'EUR',
@@ -272,19 +234,11 @@ namespace Acme\OnlineShop {
         static function fromPayload (array $payload): ProductWasRemovedFromCart {
             return new ProductWasRemovedFromCart(
                 $payload['cartId'],
-                $payload['customerId'],
                 $payload['sku'],
                 $payload['priceInCents'],
                 $payload['currency'],
                 $payload['removedAt']
             );
-        }
-
-        function andWithCustomerId (string $customerId): ProductWasRemovedFromCart {
-            $modified = clone $this;
-            $modified->customerId = $customerId;
-
-            return $modified;
         }
 
         function andWithSku (string $sku): ProductWasRemovedFromCart {
@@ -319,10 +273,6 @@ namespace Acme\OnlineShop {
 
         function cartId (): string { return $this->cartId; }
 
-        private $customerId;
-
-        function customerId (): string { return $this->customerId; }
-
         private $sku;
 
         function sku (): string { return $this->sku; }
@@ -342,7 +292,6 @@ namespace Acme\OnlineShop {
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'customerId' => $this->customerId,
                 'sku' => $this->sku,
                 'priceInCents' => $this->priceInCents,
                 'currency' => $this->currency,
@@ -492,22 +441,18 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $customerId
          * @param string $abandonedAt
          */
         function __construct (
             string $cartId,
-            string $customerId,
             string $abandonedAt
         ) {
             $this->cartId = $cartId;
-            $this->customerId = $customerId;
             $this->abandonedAt = $abandonedAt;
         }
 
         private const exampleValues = [
             'cartId' => 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA',
-            'customerId' => 'BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB',
             'abandonedAt' => '2017-05-09 10:09:59.999999+0000',
         ];
 
@@ -521,16 +466,8 @@ namespace Acme\OnlineShop {
         static function fromPayload (array $payload): CustomerAbandonedCart {
             return new CustomerAbandonedCart(
                 $payload['cartId'],
-                $payload['customerId'],
                 $payload['abandonedAt']
             );
-        }
-
-        function andWithCustomerId (string $customerId): CustomerAbandonedCart {
-            $modified = clone $this;
-            $modified->customerId = $customerId;
-
-            return $modified;
         }
 
         function andWithAbandonedAt (string $abandonedAt): CustomerAbandonedCart {
@@ -544,10 +481,6 @@ namespace Acme\OnlineShop {
 
         function cartId (): string { return $this->cartId; }
 
-        private $customerId;
-
-        function customerId (): string { return $this->customerId; }
-
         private $abandonedAt;
 
         function abandonedAt (): string { return $this->abandonedAt; }
@@ -555,7 +488,6 @@ namespace Acme\OnlineShop {
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'customerId' => $this->customerId,
                 'abandonedAt' => $this->abandonedAt,
             ];
         }
@@ -573,26 +505,19 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
-         * @param string $customerId
          * @param string $startTime
          */
         function __construct (
             string $cartId,
-            string $customerId,
             string $startTime
         ) {
             $this->cartId = $cartId;
-            $this->customerId = $customerId;
             $this->startTime = $startTime;
         }
 
         private $cartId;
 
         function cartId (): string { return $this->cartId; }
-
-        private $customerId;
-
-        function customerId (): string { return $this->customerId; }
 
         private $startTime;
 
@@ -601,7 +526,6 @@ namespace Acme\OnlineShop {
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
-                'customerId' => $this->customerId,
                 'startTime' => $this->startTime,
             ];
         }
@@ -737,19 +661,26 @@ namespace Acme\OnlineShop {
          * @api
          *
          * @param string $cartId
+         * @param string $customerId
          * @param string $orderTime
          */
         function __construct (
             string $cartId,
+            string $customerId,
             string $orderTime
         ) {
             $this->cartId = $cartId;
+            $this->customerId = $customerId;
             $this->orderTime = $orderTime;
         }
 
         private $cartId;
 
         function cartId (): string { return $this->cartId; }
+
+        private $customerId;
+
+        function customerId (): string { return $this->customerId; }
 
         private $orderTime;
 
@@ -758,6 +689,7 @@ namespace Acme\OnlineShop {
         function rawMessagePayload (): array {
             return [
                 'cartId' => $this->cartId,
+                'customerId' => $this->customerId,
                 'orderTime' => $this->orderTime,
             ];
         }
