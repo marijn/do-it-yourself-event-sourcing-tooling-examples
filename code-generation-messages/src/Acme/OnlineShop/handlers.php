@@ -14,7 +14,7 @@ namespace Acme\OnlineShop {
 
         function handle (StartShopping $command): void {
             $this->recordThat(
-                new \Acme\OnlineShop\CustomerStartedShopping(
+                new CustomerStartedShopping(
                     $command->cartId(),
                     $command->startedAt()
                 )
@@ -26,7 +26,7 @@ namespace Acme\OnlineShop {
 
         function handle (AddProductToCart $command): void {
             $this->recordThat(
-                new \Acme\OnlineShop\ProductWasAddedToCart(
+                new ProductWasAddedToCart(
                     $command->cartId(),
                     $command->sku(),
                     $command->priceInCents(),
@@ -41,7 +41,7 @@ namespace Acme\OnlineShop {
 
         function handle (RemoveProductFromCart $command): void {
             $this->recordThat(
-                new \Acme\OnlineShop\ProductWasRemovedFromCart(
+                new ProductWasRemovedFromCart(
                     $command->cartId(),
                     $command->sku(),
                     $command->priceInCents(),
