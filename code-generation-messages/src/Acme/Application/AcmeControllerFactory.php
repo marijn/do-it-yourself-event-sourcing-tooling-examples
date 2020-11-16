@@ -7,7 +7,7 @@ use Acme\Application\OnlineShop\ProductsController;
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-final class ControllerFactory {
+final class AcmeControllerFactory {
 
     private $dependencies;
 

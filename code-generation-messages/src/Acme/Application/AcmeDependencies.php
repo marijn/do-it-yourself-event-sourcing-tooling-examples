@@ -33,7 +33,7 @@ final class AcmeDependencies {
     }
 
     private function router (): RouteDispatcher {
-        $factory = new ControllerFactory($this);
+        $factory = new AcmeControllerFactory($this);
 
         return simpleDispatcher(function (RouteCollector $routing) use ($factory)
         {
