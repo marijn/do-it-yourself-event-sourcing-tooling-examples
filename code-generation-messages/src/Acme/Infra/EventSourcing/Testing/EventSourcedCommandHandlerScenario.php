@@ -37,7 +37,7 @@ final class EventSourcedCommandHandlerScenario implements TestScenario {
     }
 
     function then(Event $event): EventSourcedCommandHandlerScenario {
-        $this->then = StepDescription::forEvent($event);;
+        $this->then = StepDescription::forEvent($event);
 
         return $this;
     }
