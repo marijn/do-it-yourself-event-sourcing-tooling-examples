@@ -32,5 +32,5 @@ Our IDE will make it beautiful before we commit to the repo.
 Installation
 ------------
 
-All required dependencies have been committed to the repository. However, you can use `bin/install.sh` in the event you wish to re-install the third-
-party dependencies.
+All required dependencies have been committed to the repository.
+However, you can use `bin/install.sh` in the event you wish to re-install the third-party dependencies.
