@@ -22,7 +22,7 @@ use Zend\Diactoros\Response\SapiEmitter;
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-final class Dependencies {
+final class AcmeDependencies {
 
     function templatingEngine (): TemplatingEngine {
         return new PhpEngine(new TemplateNameParser(), new FilesystemLoader([__DIR__.'/%name%']));
