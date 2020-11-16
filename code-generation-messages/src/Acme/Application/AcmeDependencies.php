@@ -3,7 +3,6 @@
 namespace Acme\Application;
 
 use Acme\Application\OnlineShop\HardCodedProductRepository;
-use Acme\Application\OnlineShop\ProductsController;
 use Acme\OnlineShop\ProductRepository;
 use FastRoute\Dispatcher as RouteDispatcher;
 use FastRoute\RouteCollector;
