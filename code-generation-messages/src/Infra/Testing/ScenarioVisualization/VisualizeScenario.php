@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing\ScenarioVisualization;
+namespace Infra\Testing\ScenarioVisualization;
 
+use Infra\Testing\ScenarioVisualization\StepDescription;
 use function Acme\Infra\EventSourcing\fully_qualified_class_name_to_canonical;
-use Acme\Infra\Testing\ScenarioTestRunner;
+use Infra\Testing\ScenarioTestRunner;
 use Exception;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Test;

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing;
+namespace Infra;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-interface ScenarioTestRunner {
+final class Standards {
 
-    function scenario (): TestScenario;
+    const dateTimeFormat = 'Y-m-d\TH:i:s.uO';
 }

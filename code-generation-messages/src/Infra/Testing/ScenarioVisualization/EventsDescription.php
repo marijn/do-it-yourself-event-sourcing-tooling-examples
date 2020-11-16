@@ -1,15 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing\ScenarioVisualization;
+namespace Infra\Testing\ScenarioVisualization;
 
-use Acme\Infra\EventSourcing\Event;
+use Infra\EventSourcing\Event;
+use Infra\Testing\ScenarioVisualization\StepDescription;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
 final class EventsDescription extends StepDescription {
 
-    /** @var \Acme\Infra\Testing\ScenarioVisualization\StepDescription[] */
+    /** @var \Infra\Testing\ScenarioVisualization\StepDescription[] */
     private $events;
 
     function __construct (Event ... $events) {

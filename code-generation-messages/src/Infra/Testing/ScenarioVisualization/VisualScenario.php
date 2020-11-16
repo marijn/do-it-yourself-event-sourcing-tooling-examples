@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing\ScenarioVisualization;
+namespace Infra\Testing\ScenarioVisualization;
+
+use Infra\Testing\ScenarioVisualization\StepDescription;
 
 final class VisualScenario {
 

@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\EventSourcing;
+namespace Infra\EventSourcing;
+
+use Infra\EventSourcing\CommandHandler;
+use Infra\EventSourcing\Event;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.

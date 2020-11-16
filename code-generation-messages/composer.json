@@ -28,14 +28,14 @@
   },
   "autoload": {
     "psr-0": {
-      "Acme\\": ["src/"]
+      "Acme\\": ["src/"],
+      "Infra\\": ["src/"]
     },
     "files": [
       "src/Acme/OnlineShop/messages.php",
       "src/Acme/OnlineShop/handlers.php",
-
-      "src/Acme/Infra/EventSourcing/functions.php",
-      "src/Acme/Infra/UI/functions.php"
+      "src/Infra/EventSourcing/functions.php",
+      "src/Infra/UI/functions.php"
     ]
   }
 }

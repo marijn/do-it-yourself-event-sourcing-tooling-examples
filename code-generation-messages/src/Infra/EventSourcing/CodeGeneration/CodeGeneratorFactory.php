@@ -1,7 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\EventSourcing\CodeGeneration;
+namespace Infra\EventSourcing\CodeGeneration;
 
+use Infra\EventSourcing\CodeGeneration\CodeGenerator;
+use Infra\EventSourcing\CodeGeneration\CommandHandlersCodeGenerator;
+use Infra\EventSourcing\CodeGeneration\MessagesCodeGenerator;
 use InvalidArgumentException;
 
 /**

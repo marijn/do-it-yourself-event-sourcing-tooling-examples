@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra;
+namespace Infra\EventSourcing;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-final class Standards {
+interface CommandHandler {
 
-    const dateTimeFormat = 'Y-m-d\TH:i:s.uO';
 }

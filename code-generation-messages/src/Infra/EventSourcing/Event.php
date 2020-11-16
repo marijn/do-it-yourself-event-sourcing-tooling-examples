@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\EventSourcing;
+namespace Infra\EventSourcing;
+
+use Infra\EventSourcing\Message;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-interface Message {
+interface Event extends Message {
 
-    function rawMessagePayload(): array;
 }

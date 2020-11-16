@@ -1,9 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing\ScenarioVisualization;
+namespace Infra\Testing\ScenarioVisualization;
 
-use Acme\Infra\EventSourcing\Command;
-use Acme\Infra\EventSourcing\Event;
+use Infra\EventSourcing\Command;
+use Infra\EventSourcing\Event;
+use Infra\Testing\ScenarioVisualization\CommandDescription;
+use Infra\Testing\ScenarioVisualization\EventDescription;
+use Infra\Testing\ScenarioVisualization\EventsDescription;
+use Infra\Testing\ScenarioVisualization\HotspotDescription;
+use Infra\Testing\ScenarioVisualization\ScenarioDescription;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.

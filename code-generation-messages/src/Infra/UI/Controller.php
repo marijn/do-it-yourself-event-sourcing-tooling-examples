@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Infra\UI;
+namespace Infra\UI;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

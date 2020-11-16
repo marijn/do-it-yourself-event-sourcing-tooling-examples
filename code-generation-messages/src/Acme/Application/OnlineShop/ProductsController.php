@@ -2,7 +2,7 @@
 
 namespace Acme\Application\OnlineShop;
 
-use Acme\Infra\UI\Controller;
+use Infra\UI\Controller;
 use Acme\OnlineShop\ProductRepository;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

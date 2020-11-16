@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing\ScenarioVisualization;
+namespace Infra\Testing\ScenarioVisualization;
 
-use Acme\Infra\EventSourcing\Event;
+use Infra\EventSourcing\Event;
+use Infra\Testing\ScenarioVisualization\StepDescription;
 use function Acme\Infra\EventSourcing\fully_qualified_class_name_to_canonical;
 use ReflectionObject;
 

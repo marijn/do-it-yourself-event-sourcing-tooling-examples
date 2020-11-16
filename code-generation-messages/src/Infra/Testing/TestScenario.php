@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing;
+namespace Infra\Testing;
 
-use Acme\Infra\Testing\ScenarioVisualization\VisualScenario;
+use Infra\Testing\ScenarioVisualization\VisualScenario;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Infra\EventSourcing\CodeGeneration;
+namespace Infra\EventSourcing\CodeGeneration;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.

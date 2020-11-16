@@ -1,11 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\Testing\ScenarioVisualization;
+namespace Infra\Testing\ScenarioVisualization;
+
+use Infra\Testing\ScenarioVisualization\StepDescription;
 
 /**
  * @copyright Marijn Huizendveld 2018. All rights reserved.
  */
-final class HotspotDescription extends StepDescription {
+final class ScenarioDescription extends StepDescription {
 
     private $title;
     private $detail;
@@ -17,7 +19,7 @@ final class HotspotDescription extends StepDescription {
 
     function toHtml (): string {
         return <<<HTML
-<div class="hotspot sticky like-paper">
+<div class="sticky like-paper">
   <h2>{$this->title}</h2>
   <p>{$this->detail}</p>
 </div>

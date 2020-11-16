@@ -2,8 +2,8 @@
 
 namespace Acme\OnlineShop;
 
-use Acme\Infra\EventSourcing\Testing\EventSourcedCommandHandlerTestCase;
-use Acme\Infra\Standards;
+use Infra\EventSourcing\Testing\EventSourcedCommandHandlerTestCase;
+use Infra\Standards;
 use Faker\Factory;
 
 /**

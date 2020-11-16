@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\EventSourcing\Testing;
+namespace Infra\EventSourcing\Testing;
 
-use Acme\Infra\Testing\ScenarioTestRunner;
-use Acme\Infra\Testing\TestScenario;
+use Infra\EventSourcing\Testing\EventSourcedCommandHandlerScenario;
+use Infra\Testing\ScenarioTestRunner;
+use Infra\Testing\TestScenario;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class EventSourcedCommandHandlerTestCase extends TestCase implements ScenarioTestRunner {
 
-    /** @var \Acme\Infra\EventSourcing\Testing\EventSourcedCommandHandlerScenario */
+    /** @var \Infra\EventSourcing\Testing\EventSourcedCommandHandlerScenario */
     protected $scenario;
 
     protected function setUp () {

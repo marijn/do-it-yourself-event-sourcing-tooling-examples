@@ -5,7 +5,7 @@
  * Modify by changing the underlying DSL. Convention stipulates that the file has an identical filename with a .yaml extension.
  * Are you a first-timer? Ask someone to help you. Have a nice day :-)
  *
- * @see \Acme\Infra\EventSourcing\CodeGeneration\MessagesCodeGenerator
+ * @see \Infra\EventSourcing\CodeGeneration\MessagesCodeGenerator
  */
 
 namespace Acme\OnlineShop {
@@ -16,7 +16,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class CustomerStartedShopping implements \Acme\Infra\EventSourcing\Event {
+    final class CustomerStartedShopping implements \Infra\EventSourcing\Event {
 
         /**
          * @api
@@ -78,7 +78,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class ProductWasAddedToCart implements \Acme\Infra\EventSourcing\Event {
+    final class ProductWasAddedToCart implements \Infra\EventSourcing\Event {
 
         /**
          * @api
@@ -191,7 +191,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class ProductWasRemovedFromCart implements \Acme\Infra\EventSourcing\Event {
+    final class ProductWasRemovedFromCart implements \Infra\EventSourcing\Event {
 
         /**
          * @api
@@ -304,7 +304,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class CustomerPlacedOrder implements \Acme\Infra\EventSourcing\Event {
+    final class CustomerPlacedOrder implements \Infra\EventSourcing\Event {
 
         /**
          * @api
@@ -435,7 +435,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class CustomerAbandonedCart implements \Acme\Infra\EventSourcing\Event {
+    final class CustomerAbandonedCart implements \Infra\EventSourcing\Event {
 
         /**
          * @api
@@ -499,7 +499,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class StartShopping implements \Acme\Infra\EventSourcing\Command {
+    final class StartShopping implements \Infra\EventSourcing\Command {
 
         /**
          * @api
@@ -535,7 +535,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class AddProductToCart implements \Acme\Infra\EventSourcing\Command {
+    final class AddProductToCart implements \Infra\EventSourcing\Command {
 
         /**
          * @api
@@ -595,7 +595,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class RemoveProductFromCart implements \Acme\Infra\EventSourcing\Command {
+    final class RemoveProductFromCart implements \Infra\EventSourcing\Command {
 
         /**
          * @api
@@ -655,7 +655,7 @@ namespace Acme\OnlineShop {
      * @api
      * @category generated
      */
-    final class PlaceOrder implements \Acme\Infra\EventSourcing\Command {
+    final class PlaceOrder implements \Infra\EventSourcing\Command {
 
         /**
          * @api

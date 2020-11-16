@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Acme\Infra\EventSourcing\Testing;
+namespace Infra\EventSourcing\Testing;
 
-use Acme\Infra\EventSourcing\Command;
-use Acme\Infra\EventSourcing\Event;
-use Acme\Infra\Testing\ScenarioVisualization\VisualScenario;
-use Acme\Infra\Testing\ScenarioVisualization\StepDescription;
-use Acme\Infra\Testing\TestScenario;
+use Infra\EventSourcing\Command;
+use Infra\EventSourcing\Event;
+use Infra\Testing\ScenarioVisualization\VisualScenario;
+use Infra\Testing\ScenarioVisualization\StepDescription;
+use Infra\Testing\TestScenario;
 use PHPUnit\Framework\AssertionFailedError;
 
 /**
