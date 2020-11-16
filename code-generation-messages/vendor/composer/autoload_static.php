@@ -147,6 +147,7 @@ class ComposerStaticInite249306b8c7ac427060268586f916aff
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'mindplay\\readable' => __DIR__ . '/..' . '/mindplay/readable/src/readable.php',
     );
 
